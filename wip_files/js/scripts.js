@@ -1,9 +1,9 @@
 
 // JSON Storage process
 
-/* Construct a storage mechanism to store all todo app relevant data to the local default 
+/* Construct a storage mechanism to store all todo app relevant data to the local storage
 - Set a default "template" for minimal data needed for the app to load and function.
-- Check a unique field to see if it contains a value (user / id), if not have an overlay asking for a user name.
+- Check a unique field to see if it contains a value (user / id), if not have an prompt asking for a user's name.
 - Once the app is initialized for a user, it will load the default app data (categories, priorities etc).
 - Allow user to create categories and task etc. as well as removing the default example content.
 */
@@ -59,8 +59,8 @@ function randomID() {
     return result;
  }
 
-// Local parsed local data
-function localData() {
+// Locally stored parsed data
+function getLocalData() {
     const userData = localStorage.getItem('userData');
     const parseData = JSON.parse(userData);
     return parseData;
@@ -74,11 +74,12 @@ function parseData(data) {
 
 // Set unique app id.
 function appId() {
-    const loadedData = localData();
-    if(loadedData['id'] == "") {
+    const localData = getLocalData();
+    if(localData['id'] == "") {
         const appId = randomID();
-        loadedData['id'] = appId;
-        parseData(loadedData);
+        localData['id'] = appId;
+        parseData(localData);
+        lastUpdate();
     }
 }
 
@@ -86,9 +87,10 @@ function appId() {
 function userName() {
     let user = prompt("Please enter your name");
     if (user != null) {
-        const userData = localData();
-        userData['user'] = user;
-        parseData(userData);
+        const localData = getLocalData();
+        localData['user'] = user;
+        parseData(localData);
+        lastUpdate();
     }
 }
 
@@ -104,13 +106,21 @@ function appInit() {
     }
     // Get Stored local JSON data once set.
     if(localStorage.getItem('userData') != null) {
-        const parseData = localData();
-        if(parseData['user'] == "") {
+        const localData = getLocalData();
+        if(localData['user'] == "") {
             userName();
         } else {
-            const user = parseData['user'];
+            const user = localData['user'];
             document.getElementById("greeting").innerHTML = "Hello " + user + "! Welcome to the best ToDo app!";
         }
     }
     appId();
+}
+
+// Last app update
+function lastUpdate() {
+    const currentDate = Date.now();
+    const localData = getLocalData();
+    localData['last_update'] = currentDate;
+    parseData(localData);
 }
