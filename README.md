@@ -1,1 +1,6 @@
-# js_todo_app
+# Javascript ToDo APP
+
+### ToDo List
+
+
+### Purpose of the application.
