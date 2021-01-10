@@ -43,29 +43,32 @@ todoData = {
         task1 : {
             title : "Example 1",
             description : "Description for task 1",
-            date_due : "",
-            time_due : "",
+            date_due : "30/01/2021",
+            time_due : "10:00",
             category : "general",
             priority : "medium",
-            tags : ["general"]
+            tags : ["general"],
+            completed : false
         },
         task2 : {
             title : "Example 2",
             description : "Description for task 2",
-            date_due : "",
-            time_due : "",
+            date_due : "30/01/2021",
+            time_due : "10:00",
             category : "work",
             priority : "high",
-            tags : ["work"]
+            tags : ["work"],
+            completed : false
         },
         task3 : {
             title : "Example 3",
             description : "Description for task 3",
-            date_due : "",
-            time_due : "",
+            date_due : "30/01/2021",
+            time_due : "10:00",
             category : "home",
             priority : "low",
-            tags : ["home"]
+            tags : ["home"],
+            completed : false
         }
     },
     last_update : ""
@@ -164,7 +167,7 @@ APP_C3. Class for instantiating new priority levels
 
 // APP_C1. Main class for instantiating new tasks
 class Task {
-    constructor(title, description, date_due, time_due, category, priority, tags) {
+    constructor(title, description, date_due, time_due, category, priority, tags, completed) {
         this.title = title;
         this.description = description;
         this.date_due = date_due;
@@ -172,6 +175,7 @@ class Task {
         this.category = category;
         this.priority = priority;
         this.tags = tags;
+        this.completed = completed;
     }
 
     // Method to write new task to local storage
@@ -187,6 +191,7 @@ class Task {
                 userData['todo_data'][task]['category'] = this.category;
                 userData['todo_data'][task]['priority'] = this.priority;
                 userData['todo_data'][task]['tags'] = this.tags;
+                userData['todo_data'][task]['completed'] = this.completed;
                 parseData(userData);
             } else {
                 console.log('Task name '+ task +' already exist.');
