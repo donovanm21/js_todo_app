@@ -2,13 +2,22 @@
     <head>
         <title>WIP Code</title>
         <script src="js/scripts.js"></script>
+        <link rel="stylesheet" href="css/styles.css" >
     </head>
     <body>
         <h1 style="text-align: center;">The Think Tank</h1>
         <p id="greeting" style="text-align: center;"></p>
+        <div class="wrapper">
+            <div class="content">
+                <div class="categories">
+                    <div class="grid-container" id="category_grid"></div>
+                </div>
+                <div id="task-list"></div>
+            </div>
+        </div>
         <script>
             appInit();
-
+            /*
             // New Task
             let task4 = new Task('Example 4', 'Description for task 4', '30/01/2021', '10:00', 'general', 'low', ['test', 'general', 'home'], false);
             
@@ -29,6 +38,24 @@
             
             // Store the new Priority created
             veryLow.addPriority();
+            */
+            
+            // Get the stored categories from local storage.
+            const catArray = catArr();
+
+            // For loop adding the category elements.
+            for(i = 0; i < catArray.length; i++) {
+                document.getElementById('category_grid').innerHTML += '<div class="grid-item category-tile">'+ catArray[i] +'</div>';
+            }
+
+            // Get all the current saved task in local storage.
+            const taskArray = taskArr();
+            console.log(taskArray);
+
+            // For loop adding the tasks elements.
+            for(i = 0; i < taskArray.length; i++) {
+                document.getElementById('category_grid').innerHTML += '<div class="grid-item category-tile">'+ catArray[i] +'</div>';
+            }
 
         </script>
     </body>

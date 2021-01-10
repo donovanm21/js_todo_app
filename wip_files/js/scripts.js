@@ -154,7 +154,7 @@ function lastUpdate() {
 
 Functions:
 
-APP_F1.
+APP_F1. Simple function to get all store categories and return them in an array
 APP_F2.
 
 Classes:
@@ -261,4 +261,18 @@ class Priority {
             console.log('APP Error: No local store configured!');
         }
     }
+}
+
+// APP_F1. Simple function to get all store categories and return them in an array
+function catArr() {
+    const localData = getLocalData();
+    const Obj = localData['category'];
+    return Object.values(Obj);
+}
+
+// APP_F2. Simple function to retrieve all the tasks stored locally
+function taskArr() {
+    const localData = getLocalData();
+    const Obj = localData['todo_data'];
+    return Object.values(Obj);
 }
