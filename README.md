@@ -19,3 +19,4 @@ The app is a self contained local browser based application, making use of the l
 - Add methods for removing tasks.
 - Add several checks in the class and functions to prevent duplication of stored items.
 - Test done on all the above mentioned functions and classes. All working as expected.
+- All new js code carried over to main program from wip.

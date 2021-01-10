@@ -45,7 +45,7 @@ todoData = {
             time_due : "",
             category : "general",
             priority : "medium",
-            tags : "general"
+            tags : ["general"]
         },
         task2 : {
             title : "Example 2",
@@ -54,7 +54,7 @@ todoData = {
             time_due : "",
             category : "work",
             priority : "high",
-            tags : "work"
+            tags : ["work"]
         },
         task3 : {
             title : "Example 3",
@@ -63,7 +63,7 @@ todoData = {
             time_due : "",
             category : "home",
             priority : "low",
-            tags : "home"
+            tags : ["home"]
         }
     },
     last_update : ""
