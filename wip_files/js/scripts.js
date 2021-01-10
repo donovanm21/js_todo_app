@@ -1,11 +1,24 @@
 
 // JSON Storage process
 
-/* Construct a storage mechanism to store all todo app relevant data to the local storage
+/* 
+
+Construct a storage mechanism to store all todo app relevant data to the local storage
 - Set a default "template" for minimal data needed for the app to load and function.
 - Check a unique field to see if it contains a value (user / id), if not have an prompt asking for a user's name.
 - Once the app is initialized for a user, it will load the default app data (categories, priorities etc).
 - Allow user to create categories and task etc. as well as removing the default example content.
+
+Functions:
+
+JSON_F1. Random string generator
+JSON_F2. Locally stored parsed data
+JSON_F3. Parse data and set local data
+JSON_F4. Set unique app id
+JSON_F5. Prompt for user's name
+JSON_F6. App setup for local storage
+JSON_F7. Last app update
+
 */
 
 todoData = {
@@ -53,26 +66,26 @@ todoData = {
     last_update : ""
 };
 
-// Random string generator.
+// JSON_F1. Random string generator
 function randomID() {
     const result = Math.random().toString(36).substring(2,8);
     return result;
  }
 
-// Locally stored parsed data
+// JSON_F2. Locally stored parsed data
 function getLocalData() {
     const userData = localStorage.getItem('userData');
     const parseData = JSON.parse(userData);
     return parseData;
 }
 
-// Parse data and set local data.
+// JSON_F3. Parse data and set local data
 function parseData(data) {
     const userData = JSON.stringify(data);
     localStorage.setItem('userData', userData);
 }
 
-// Set unique app id.
+// JSON_F4. Set unique app id
 function appId() {
     const localData = getLocalData();
     if(localData['id'] == "") {
@@ -83,7 +96,7 @@ function appId() {
     }
 }
 
-// Prompt for user's name
+// JSON_F5. Prompt for user's name
 function userName() {
     let user = prompt("Please enter your name");
     if (user != null) {
@@ -94,7 +107,7 @@ function userName() {
     }
 }
 
-// App setup for local storage.
+// JSON_F6. App setup for local storage
 function appInit() {
     // Set JSON Data on app inilialization.
     if(localStorage.getItem('userData') == null) {
@@ -117,10 +130,26 @@ function appInit() {
     appId();
 }
 
-// Last app update
+// JSON_F7. Last app update
 function lastUpdate() {
     const currentDate = Date.now();
     const localData = getLocalData();
     localData['last_update'] = currentDate;
     parseData(localData);
 }
+
+// Main Application logic, classes and functions.
+
+/*
+
+Functions:
+
+APP_F1.
+APP_F2.
+
+Classes:
+
+APP_C1.
+APP_C2.
+
+*/
