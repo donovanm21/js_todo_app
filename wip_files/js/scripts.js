@@ -154,7 +154,104 @@ APP_F2.
 
 Classes:
 
-APP_C1.
-APP_C2.
+APP_C1. Main class for instantiating new tasks
+APP_C2. Class for new categories
+APP_C3. Class for new priority levels
 
 */
+
+// APP_C1. Main class for instantiating new tasks
+class Task {
+    constructor(title, description, date_due, time_due, category, priority, tags) {
+        this.title = title;
+        this.description = description;
+        this.date_due = date_due;
+        this.time_due = time_due;
+        this.category = category;
+        this.priority = priority;
+        this.tags = tags;
+    }
+
+    // Method to write new task to local storage
+    storeTask(task) {
+        if(localStorage.getItem('userData') != null) {
+            const userData = getLocalData();
+            if(userData['todo_data'][task] == null) {
+                userData['todo_data'][task] = {};
+                userData['todo_data'][task]['title'] = this.title;
+                userData['todo_data'][task]['description'] = this.description;
+                userData['todo_data'][task]['date_due'] = this.date_due;
+                userData['todo_data'][task]['time_due'] = this.time_due;
+                userData['todo_data'][task]['category'] = this.category;
+                userData['todo_data'][task]['priority'] = this.priority;
+                userData['todo_data'][task]['tags'] = this.tags;
+                parseData(userData);
+            } else {
+                console.log('Task name '+ task +' already exist.');
+            }
+        } else {
+            console.log('APP Error: No local store configured!');
+        }
+    }
+
+    // Remove a task
+    deleteTask(task) {
+        if(localStorage.getItem('userData') != null) {
+            const userData = getLocalData();
+            if(userData['todo_data'][task] != null) {
+                delete userData['todo_data'][task];
+                parseData(userData);
+            } else {
+                console.log('Task name '+ task +' do not exist.');
+            }
+        }
+    }
+}
+
+// APP_C2. Class for new categories
+class Category {
+    constructor(value) {
+        this.value = value;
+    }
+    // Adding a new category.
+    addCategory() {
+        if(localStorage.getItem('userData') != null) {
+            const userData = getLocalData();
+            const obj = userData['category'];
+            let objLen = Object.keys(obj).length;
+            const cNum = objLen + 1;
+            if(Object.values(obj).indexOf(this.value) > -1) {
+                console.log('Category '+ this.value +' already exist.');
+            } else {
+                userData['category']['c' + cNum] = this.value;
+                parseData(userData);
+            }
+        } else {
+            console.log('APP Error: No local store configured!');
+        }
+    }
+}
+
+// APP_C3. Class for new priority levels
+class Priority {
+    constructor(value) {
+        this.value = value;
+    }
+    // Adding a new priority level.
+    addPriority() {
+        if(localStorage.getItem('userData') != null) {
+            const userData = getLocalData();
+            const obj = userData['priority'];
+            let objLen = Object.keys(obj).length;
+            const pNum = objLen + 1;
+            if(Object.values(obj).indexOf(this.value) > -1) {
+                console.log('Priority '+ this.value +' already exist.');
+            } else {
+                userData['priority']['p' + pNum] = this.value;
+                parseData(userData);
+            }
+        } else {
+            console.log('APP Error: No local store configured!');
+        }
+    }
+}

@@ -8,6 +8,28 @@
         <p id="greeting" style="text-align: center;"></p>
         <script>
             appInit();
+
+            // New Task
+            let task4 = new Task('Example 4', 'Description for task 4', '', '', 'general', 'low', 'test');
+            
+            // Store new task to local storage
+            //task4.storeTask('task4');
+
+            // Delete task
+            task4.deleteTask('task4');
+
+            // New Category
+            let food = new Category('food');
+            
+            // Store the new category created
+            food.addCategory();
+
+            // New Priority level
+            let veryLow = new Priority('very high');
+            
+            // Store the new Priority created
+            veryLow.addPriority();
+
         </script>
     </body>
 </html>
