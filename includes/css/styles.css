@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+    color: white;
+}
+.wrapper {
+    width: 70%;
+    border: 2px solid red;
+    min-height: 600px;
+    margin: auto;
+}
+.content {
+    width: 60%;
+    border: 2px solid green;
+    min-height: 500px;
+    margin: 50px auto;
+}
+.header {
+    text-align: center;
+}
+.categories {
+    text-align: center;
+}
+
+/* Grid Styles */
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    grid-gap: 50px;
+}

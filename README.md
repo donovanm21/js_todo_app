@@ -72,4 +72,4 @@ https://bashooka.com/inspiration/to-do-list-app-ui-designs/
 - The user experience is consistent from page to page
 - Project takes a minimum amount of input to use
 - Display a helpful response to the user on errors
-- Call to actions are obvious_
+- Call to actions are obvious

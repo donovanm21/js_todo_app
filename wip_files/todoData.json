@@ -1,0 +1,44 @@
+{
+    "id" : "",
+    "user" : "",
+    "category" : {
+        "1" : "general",
+        "2" : "home",
+        "3" : "work"
+    },
+    "priority" : {
+        "p1" : "high",
+        "p2" : "medium",
+        "3" : "low"
+    },
+    "todo_data" : {
+        "task1" : {
+            "title" : "",
+            "description" : "",
+            "date_due" : "",
+            "time_due" : "",
+            "category" : "",
+            "priority" : "",
+            "tags" : ""
+        },
+        "task2" : {
+            "title" : "",
+            "description" : "",
+            "date_due" : "",
+            "time_due" : "",
+            "category" : "",
+            "priority" : "",
+            "tags" : ""
+        },
+        "task3" : {
+            "title" : "",
+            "description" : "",
+            "date_due" : "",
+            "time_due" : "",
+            "category" : "",
+            "priority" : "",
+            "tags" : ""
+        }
+    },
+    "last_update" : ""
+}
