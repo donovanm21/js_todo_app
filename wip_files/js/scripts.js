@@ -24,6 +24,8 @@ JSON_F7. Last app update
 
 */
 
+// Template for initializing the application on first load and load some example content.
+
 todoData = {
     id : "",
     user : "",
@@ -155,8 +157,8 @@ APP_F2.
 Classes:
 
 APP_C1. Main class for instantiating new tasks
-APP_C2. Class for new categories
-APP_C3. Class for new priority levels
+APP_C2. Class for instantiating new categories
+APP_C3. Class for instantiating new priority levels
 
 */
 
