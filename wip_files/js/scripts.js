@@ -1,9 +1,12 @@
 
-// JSON Storage process
+//////////////////////////
+// JSON Storage process //
+//////////////////////////
 
 /* 
 
-Construct a storage mechanism to store all todo app relevant data to the local storage
+Purpose : Construct a storage mechanism to store all todo app relevant data to the local storage
+
 - Set a default "template" for minimal data needed for the app to load and function.
 - Check a unique field to see if it contains a value (user / id), if not have an prompt asking for a user's name.
 - Once the app is initialized for a user, it will load the default app data (categories, priorities etc).
@@ -138,7 +141,9 @@ function lastUpdate() {
     parseData(localData);
 }
 
-// Main Application logic, classes and functions.
+////////////////////////////////////////////////////
+// Main Application logic, classes and functions. //
+////////////////////////////////////////////////////
 
 /*
 
