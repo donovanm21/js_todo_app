@@ -31,10 +31,12 @@ body {
     grid-gap: 25px;
     margin-top: 20px;
 }
-
 .category-tile {
     padding: 30px;
     border: 1px solid white;
     border-radius: 5px;
+    font-weight: bold;
+}
+.task-title {
     font-weight: bold;
 }

@@ -12,7 +12,10 @@
                 <div class="categories">
                     <div class="grid-container" id="category_grid"></div>
                 </div>
-                <div id="task-list"></div>
+                <ul id="task-list"></ul>
+            </div>
+            <div>
+                <button id="add-task">Add Task</button>
             </div>
         </div>
         <script>
@@ -21,8 +24,8 @@
             // New Task
             let task4 = new Task('Example 4', 'Description for task 4', '30/01/2021', '10:00', 'general', 'low', ['test', 'general', 'home'], false);
             
-            // Store new task to local storage
-            task4.storeTask('task4');
+            // Add new task to local storage
+            task4.addTask('task4');
 
             // Delete task
             //task4.deleteTask('task4');
@@ -50,13 +53,14 @@
 
             // Get all the current saved task in local storage.
             const taskArray = taskArr();
-            console.log(taskArray);
 
             // For loop adding the tasks elements.
             for(i = 0; i < taskArray.length; i++) {
-                document.getElementById('category_grid').innerHTML += '<div class="grid-item category-tile">'+ catArray[i] +'</div>';
+                document.getElementById('task-list').innerHTML += '<li class="task-title">'+ taskArray[i]['title'] +'</li>';
             }
 
+            // Task count in local storage
+            taskCount();
         </script>
     </body>
 </html>

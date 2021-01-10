@@ -155,7 +155,8 @@ function lastUpdate() {
 Functions:
 
 APP_F1. Simple function to get all store categories and return them in an array
-APP_F2.
+APP_F2. Simple function to retrieve all the tasks stored locally
+APP_F3. Get the current task count in local storage
 
 Classes:
 
@@ -179,7 +180,7 @@ class Task {
     }
 
     // Method to write new task to local storage
-    storeTask(task) {
+    addTask(task) {
         if(localStorage.getItem('userData') != null) {
             const userData = getLocalData();
             if(userData['todo_data'][task] == null) {
@@ -275,4 +276,12 @@ function taskArr() {
     const localData = getLocalData();
     const Obj = localData['todo_data'];
     return Object.values(Obj);
+}
+
+// APP_F3. Get the current task count in local storage
+function taskCount() {
+    const localData = getLocalData();
+    const obj = localData['todo_data'];
+    let objLen = Object.keys(obj).length;
+    console.log(objLen);
 }
