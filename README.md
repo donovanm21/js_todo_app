@@ -10,6 +10,21 @@ The app is a self contained local browser based application, making use of the l
 
 ## Updates and Status of the App.
 
+[Update - 11 Jan 2021]
+
+- Started building the UI basic layout.
+- Heading, category and task section created.
+- Add button added to the buttom of the app to add tasks.
+- Basic styling done to create a clean format for a very simple view.
+- Category bubble tags added.
+- Border colours adjusted for priority indication.
+- Comment the styles.css for easy reading.
+- Comments add to index.html for various section indication.
+- Test retrieval of content from storage and creating dynamic elements.
+- Basic layout for the prototype stage below.
+
+
+
 [Update - 10 Jan 2021]
 
 - Started with some basic UI structure and styles.

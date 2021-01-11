@@ -31,6 +31,9 @@ body {
     grid-gap: 25px;
     margin-top: 20px;
 }
+.categories {
+    border: 1px solid yellow;
+}
 .category-tile {
     padding: 30px;
     border: 1px solid white;
