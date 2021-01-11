@@ -23,7 +23,7 @@ The app is a self contained local browser based application, making use of the l
 - Test retrieval of content from storage and creating dynamic elements.
 - Basic layout for the prototype stage below.
 
-<img style="width: 180px;" src="https://raw.githubusercontent.com/donovanm21/js_todo_app/main/wip_files/img/proto_v1.png" />
+<img src="https://raw.githubusercontent.com/donovanm21/js_todo_app/main/wip_files/img/proto_v1.png" />
 
 [Update - 10 Jan 2021]
 
