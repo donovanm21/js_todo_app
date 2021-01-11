@@ -20,7 +20,7 @@
         </div>
         <script>
             appInit();
-            /*
+            
             // New Task
             let task4 = new Task('Example 4', 'Description for task 4', '30/01/2021', '10:00', 'general', 'low', ['test', 'general', 'home'], false);
             
@@ -37,11 +37,11 @@
             food.addCategory();
 
             // New Priority level
-            let veryLow = new Priority('very high');
+            //let veryLow = new Priority('very high');
             
             // Store the new Priority created
-            veryLow.addPriority();
-            */
+            //veryLow.addPriority();
+            
             
             // Get the stored categories from local storage.
             const catArray = catArr();
@@ -60,7 +60,14 @@
             }
 
             // Task count in local storage
-            taskCount();
+            //const taskNum = taskCount() + 1;
+
+            // New Task
+            //let taskVar = 'task' + taskNum;
+            //let newTask = new Task('Example 5', 'Description for task 5', '30/01/2021', '10:00', 'general', 'low', ['test', 'general', 'home'], false);
+            
+            // Add new task to local storage
+            //newTask.addTask(taskVar);
         </script>
     </body>
 </html>

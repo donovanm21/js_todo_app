@@ -1,4 +1,3 @@
-
 //////////////////////////
 // JSON Storage process //
 //////////////////////////
@@ -283,5 +282,5 @@ function taskCount() {
     const localData = getLocalData();
     const obj = localData['todo_data'];
     let objLen = Object.keys(obj).length;
-    console.log(objLen);
+    return objLen;
 }
