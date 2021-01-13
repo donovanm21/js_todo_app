@@ -154,7 +154,7 @@ APP_F1. Simple function to get all store categories and return them in an array
 APP_F2. Simple function to retrieve all the tasks stored locally
 APP_F3. Get the current task count in local storage
 APP_F4. Create new category class and add new category to local storage.
-APP_F5. 
+APP_F5. Function to generate the category grid based on element count.
 
 Classes:
 
@@ -293,7 +293,30 @@ function newTaskCategory() {
     }
 }
 
-// APP_F5. Function to generate the category grid based on element count.
+/* Future Improvement
+switch(objLen) {
+    case objLen % 3 == 0:
+        for(i in obj) {
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj[i] +'</div>';
+        }
+        break;
+    case objLen % 3 == 1:
+        for(i in obj) {
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj[i] +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj[i] +'</div>';
+        }
+        break;
+    case objLen % 3 == 2:
+        for(i in obj) {
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj[i] +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj[i] +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-bottom">'+ obj[i] +'</div>';
+        }
+        break;
+}
+*/
+
+// APP_F5. Function to generate the category grid based on element count. Not efficient but showscases the intention.
 function catLoad() {
     const userData = getLocalData();
     const obj = userData['category'];

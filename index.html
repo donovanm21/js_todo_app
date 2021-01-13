@@ -77,7 +77,7 @@
                             <label class="task-label">Time Due</label>
                                 <input class="task-input" id="new-task-time-due" type="time" />
                             <label class="task-label">Priority</label>
-                                <input id="mySlider" class="task-input" id="new-task-priority" type="range" min="1" max="3"/>
+                                <input id="mySlider" class="task-input" type="range" min="1" max="3"/>
                                 <div id="priority"></div>
                             <label class="task-label">Categories</label>
                                 <!-- Need have the category section generate dynamically -->
@@ -91,7 +91,7 @@
                                 </div>
                                 <!-- Function will grab this input if not empty to create a new category -->
                                 <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
-                            <input class="submit" type="submit" name="" onclick="newTaskCategory();" value="Create"/>
+                            <input class="submit" type="submit" name="" onclick="addNewTask();" value="Create"/>
                         </form>
                     </div>
                     <div></div>
@@ -126,23 +126,46 @@
         let slider = document.getElementById("mySlider");
         let priority = document.getElementById("priority");
         if(slider.value == 2){
-            priority.innerHTML = '<p style="color: orange;">Medium</p>';
+            priority.innerHTML = '<textarea style="color: orange; display: none;" id="new-task-priority">Medium</textarea>';
+            priority.innerHTML += '<p style="color: orange;">Medium</p>';
         }
         
         // Update priority output on slider value change.
         slider.oninput = function() {
             if(slider.value == 1){
-            priority.innerHTML = '<p style="color: lightblue;">Low</p>';
+            priority.innerHTML = '<textarea style="color: lightblue; display: none;" id="new-task-priority">Low</textarea>';
+            priority.innerHTML += '<p style="color: lightblue;">Low</p>';
             } else if(slider.value == 2) {
-                priority.innerHTML = '<p style="color: orange;">Medium</p>';
+                priority.innerHTML = '<textarea style="color: orange; display: none;" id="new-task-priority">Medium</textarea>';
+                priority.innerHTML += '<p style="color: orange;">Medium</p>';
             } else {
-                priority.innerHTML = '<p style="color: red;">High</p>';
+                priority.innerHTML = '<textarea style="color: red; display: none;" id="new-task-priority">High</textarea>';
+                priority.innerHTML += '<p style="color: red;">High</p>';
             }
         }
         // Form Action
         document.getElementById('new-task-form').addEventListener('click', function(event){
             event.preventDefault();
+            let taskPriority = document.getElementById('new-task-priority').value;
         });
 
+
+        // Add new task
+        function addNewTask() {
+            let taskTitle = document.getElementById('new-task-title').value;
+            if(taskTitle != "") {
+                let taskTitle = document.getElementById('new-task-title').value;
+                let taskDescription = document.getElementById('new-task-description').value;
+                let taskDateDue = document.getElementById('new-task-date-due').value;
+                let taskTimeDue = document.getElementById('new-task-time-due').value;
+                let taskPriority = document.getElementById('new-task-priority').value;
+                //let taskTitle = document.getElementById('new-task-categories').value;
+                let tempNewTask = new Task(taskTitle, taskDescription, taskDateDue, taskTimeDue, taskPriority, ['General', 'Home'], false);
+                tempNewTask.addTask('task4');
+                newTaskCategory();
+            } else {
+                console.log('Error: Please fill in all the fields');
+            }
+        }
     </script>
 </html>
