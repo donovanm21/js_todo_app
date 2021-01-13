@@ -284,3 +284,9 @@ function taskCount() {
     let objLen = Object.keys(obj).length;
     return objLen;
 }
+
+// APP_F4. Create new category class and add new category to local storage.
+function addCat(value) {
+    let tempCat = new Category(value);
+    tempCat.addCategory();
+}

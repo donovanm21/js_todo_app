@@ -73,7 +73,7 @@
                 <div class="add-task-section">
                     <h2>Add New Task</h2>
                     <div class="add-task-form">
-                        <form>
+                        <form id="new-task-form">
                             <label class="task-label">Title</label>
                                 <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
@@ -95,8 +95,9 @@
                                     <span>Work</span>
                                     <input type="checkbox" name="work" value="Work"/>
                                 </div>
+                                <!-- Function will grab this input if not empty to create a new category -->
                                 <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
-                            <input class="submit" type="submit" name="" value="Create"/>
+                            <input class="submit" type="submit" name="" onclick="newTaskCategory();" value="Create"/>
                         </form>
                     </div>
                     <div></div>
@@ -139,6 +140,20 @@
                 priority.innerHTML = '<p style="color: orange;">Medium</p>';
             } else {
                 priority.innerHTML = '<p style="color: red;">High</p>';
+            }
+        }
+        // Form Action
+        document.getElementById('new-task-form').addEventListener("click", function(event){
+            event.preventDefault()
+        });
+
+        // Add new category
+        function newTaskCategory() {
+            let newCategory = document.getElementById('new-task-category').value;
+            if(newCategory != "") { 
+                addCat(newCategory);
+            } else {
+                console.log('Error: Please enter a category');
             }
         }
     </script>
