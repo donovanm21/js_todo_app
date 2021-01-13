@@ -10,6 +10,18 @@ The app is a self contained local browser based application, making use of the l
 
 ## Updates and Status of the App.
 
+[Update - 13 Jan 2021]
+
+- Built the form to add a new task.
+- Done some basic styling to have the form content readable.
+- Add various fields for the required inputs (test, date, time etc).
+- Priority slider showing the priority levels with colour indication.
+- Category selections, this need to be buttons which is more mobile friendly.
+- Need to write the JS function hide the new task form and display on + as overlay.
+- Basic layout below for new task form.
+
+<img src="https://raw.githubusercontent.com/donovanm21/js_todo_app/main/wip_files/img/task_add.png" />
+
 [Update - 12 Jan 2021]
 
 - Work on the various category layouts to adjust based on amount.

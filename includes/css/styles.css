@@ -121,3 +121,48 @@ body {
     border: 2px solid lightgreen;
     cursor: pointer;
 }
+
+/* Add New Tasks Styles */
+.add-task-section {
+    border: 1px solid purple;
+    text-align: center;
+}
+.add-task-form {
+    width: 90%;
+    border: 1px solid pink;
+    margin: auto;
+}
+.task-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    width: 200px;
+    margin: auto;
+    color: white;
+    padding: 10px;
+}
+.task-input {
+    width: 250px;
+    text-align: center;
+    line-height: 25px;
+    outline: none;
+}
+.add-task-form textarea {
+    width: 250px;
+    text-align: center;
+    min-height: 100px;
+    outline: none;
+    resize: none;
+}
+#priority {
+    font-weight: bold;
+}
+.submit {
+    display: block;
+    margin: 15px auto;
+    padding: 10px;
+}
+.submit:hover {
+    background-color: lightgreen;
+}
