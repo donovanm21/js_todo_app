@@ -1,4 +1,3 @@
-
 //////////////////////////
 // JSON Storage process //
 //////////////////////////
@@ -24,6 +23,8 @@ JSON_F7. Last app update
 
 */
 
+// Template for initializing the application on first load and load some example content.
+
 todoData = {
     id : "",
     user : "",
@@ -41,29 +42,32 @@ todoData = {
         task1 : {
             title : "Example 1",
             description : "Description for task 1",
-            date_due : "",
-            time_due : "",
+            date_due : "30/01/2021",
+            time_due : "10:00",
             category : "general",
             priority : "medium",
-            tags : "general"
+            tags : ["general"],
+            completed : false
         },
         task2 : {
             title : "Example 2",
             description : "Description for task 2",
-            date_due : "",
-            time_due : "",
+            date_due : "30/01/2021",
+            time_due : "10:00",
             category : "work",
             priority : "high",
-            tags : "work"
+            tags : ["work"],
+            completed : false
         },
         task3 : {
             title : "Example 3",
             description : "Description for task 3",
-            date_due : "",
-            time_due : "",
+            date_due : "30/01/2021",
+            time_due : "10:00",
             category : "home",
             priority : "low",
-            tags : "home"
+            tags : ["home"],
+            completed : false
         }
     },
     last_update : ""
@@ -149,20 +153,21 @@ function lastUpdate() {
 
 Functions:
 
-APP_F1.
-APP_F2.
+APP_F1. Simple function to get all store categories and return them in an array
+APP_F2. Simple function to retrieve all the tasks stored locally
+APP_F3. Get the current task count in local storage
 
 Classes:
 
 APP_C1. Main class for instantiating new tasks
-APP_C2. Class for new categories
-APP_C3. Class for new priority levels
+APP_C2. Class for instantiating new categories
+APP_C3. Class for instantiating new priority levels
 
 */
 
 // APP_C1. Main class for instantiating new tasks
 class Task {
-    constructor(title, description, date_due, time_due, category, priority, tags) {
+    constructor(title, description, date_due, time_due, category, priority, tags, completed) {
         this.title = title;
         this.description = description;
         this.date_due = date_due;
@@ -170,10 +175,11 @@ class Task {
         this.category = category;
         this.priority = priority;
         this.tags = tags;
+        this.completed = completed;
     }
 
     // Method to write new task to local storage
-    storeTask(task) {
+    addTask(task) {
         if(localStorage.getItem('userData') != null) {
             const userData = getLocalData();
             if(userData['todo_data'][task] == null) {
@@ -185,6 +191,7 @@ class Task {
                 userData['todo_data'][task]['category'] = this.category;
                 userData['todo_data'][task]['priority'] = this.priority;
                 userData['todo_data'][task]['tags'] = this.tags;
+                userData['todo_data'][task]['completed'] = this.completed;
                 parseData(userData);
             } else {
                 console.log('Task name '+ task +' already exist.');
@@ -254,4 +261,26 @@ class Priority {
             console.log('APP Error: No local store configured!');
         }
     }
+}
+
+// APP_F1. Simple function to get all store categories and return them in an array
+function catArr() {
+    const localData = getLocalData();
+    const Obj = localData['category'];
+    return Object.values(Obj);
+}
+
+// APP_F2. Simple function to retrieve all the tasks stored locally
+function taskArr() {
+    const localData = getLocalData();
+    const Obj = localData['todo_data'];
+    return Object.values(Obj);
+}
+
+// APP_F3. Get the current task count in local storage
+function taskCount() {
+    const localData = getLocalData();
+    const obj = localData['todo_data'];
+    let objLen = Object.keys(obj).length;
+    return objLen;
 }

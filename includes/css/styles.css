@@ -6,11 +6,11 @@ body {
 .wrapper {
     width: 70%;
     border: 2px solid red;
-    min-height: 600px;
     margin: auto;
+    min-width: 700px;
 }
 .content {
-    width: 70%;
+    width: 80%;
     min-width: 450px;
     border: 2px solid green;
     min-height: 500px;
@@ -31,21 +31,27 @@ body {
     display: inline-grid;
     grid-template-columns: auto auto auto;
     justify-content: center;
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-    grid-gap: 5px;
+    grid-gap: 1px;
 }
 .grid-item {
-    padding: 20px;
+    padding: 20px 40px;
     border: 1px solid white;
-    border-radius: 5px;
-    margin: 5px;
+    margin: 0px;
+    font-weight: bold;
+}
+.item-top {
+    grid-column: 1 / span 3;
+}
+.item-bottom {
+    grid-column: 1 / span 3;
 }
 
 /* Categories Section */
 .categories {
     text-align: center;
     border: 1px solid yellow;
+    padding-bottom: 20px;
+    margin-bottom: 1px;
 }
 
 /* Task Section */
@@ -69,6 +75,10 @@ body {
     float: left;
     font-size: 20px;
 }
+.task-completed {
+    text-decoration-line: line-through;
+    opacity: 0.5;
+}
 .icon-category {
     border: 2px solid white;
     float: right;
@@ -88,6 +98,9 @@ body {
 .icon-priority-low {
     border-color: lightblue;
 }
+.icon-completed {
+    opacity: 0.5;
+}
 
 /* Add button */
 .add-button {
@@ -100,7 +113,11 @@ body {
     float: right;
     font-weight: bold;
     font-size: 30px;
-    background-color: lightblue;
+    background-color: lightgreen;
     color: black;
     margin: 10px;
+}
+.add-button:hover {
+    border: 2px solid lightgreen;
+    cursor: pointer;
 }

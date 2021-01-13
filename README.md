@@ -10,6 +10,15 @@ The app is a self contained local browser based application, making use of the l
 
 ## Updates and Status of the App.
 
+[Update - 12 Jan 2021]
+
+- Work on the various category layouts to adjust based on amount.
+- Category layout drawing done for up to 14 categories.
+- Work on various category css styles to produce the needed layout.
+- Example completed task, css styles done line through text and opacity of 50%
+- Adjustments to widths of wrapper and content.
+- Adjust category box width to accomidate long works.
+
 [Update - 11 Jan 2021]
 
 - Started building the UI basic layout.
