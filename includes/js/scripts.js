@@ -154,6 +154,7 @@ APP_F1. Simple function to get all store categories and return them in an array
 APP_F2. Simple function to retrieve all the tasks stored locally
 APP_F3. Get the current task count in local storage
 APP_F4. Create new category class and add new category to local storage.
+APP_F5. 
 
 Classes:
 
@@ -290,4 +291,151 @@ function newTaskCategory() {
     } else {
         console.log('Error: Please enter a category');
     }
+}
+
+// APP_F5. Function to generate the category grid based on element count.
+function catLoad() {
+    const userData = getLocalData();
+    const obj = userData['category'];
+    let objLen = Object.keys(obj).length;
+    switch (objLen) {
+        case 3:
+            // Code for 3 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            break;
+        case 4:
+            // Code for 4 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            break;
+        case 5:
+            // Code for 5 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-bottom">'+ obj.c5 +'</div>';
+            break;
+        case 6:
+            // Code for 6 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            break;
+        case 7:
+            // Code for 7 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            break;
+        case 8:
+            // Code for 8 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-bottom">'+ obj.c8 +'</div>';
+            break;
+        case 9:
+            // Code for 9 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c8 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c9 +'</div>';
+            break;
+        case 10:
+            // Code for 10 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c8 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c9 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c10 +'</div>';
+            break;
+        case 11:
+            // Code for 11 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c8 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c9 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c10 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-bottom">'+ obj.c11 +'</div>';
+            break;
+        case 12:
+            // Code for 12 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c8 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c9 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c10 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c11 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c12 +'</div>';
+            break;
+        case 13:
+            // Code for 13 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c8 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c9 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c10 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c11 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c12 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c13 +'</div>';
+            break;
+        case 14:
+            // Code for 14 categories
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-top">'+ obj.c1 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c2 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c3 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c4 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c5 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c6 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c7 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c8 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c9 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c10 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c11 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c12 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item">'+ obj.c13 +'</div>';
+            document.getElementById('category-grid').innerHTML += '<div class="grid-item item-bottom">'+ obj.c14 +'</div>';
+            break;
+      }
 }

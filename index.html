@@ -21,13 +21,7 @@
                 <!-- Category Section -->
                 <div class="categories">
                     <h2>Categories</h2>
-                    <div class="grid-container">
-                        <div class="grid-item item-top">General</div>
-                        <div class="grid-item">Home</div>
-                        <div class="grid-item">Work</div>
-                        <div class="grid-item">Food</div>
-                        <div class="grid-item item-bottom">Medical</div>
-                      </div>
+                    <div class="grid-container" id="category-grid"></div>
                 </div>
                 <!-- Task Section -->
                 <div class="task-list">
@@ -125,6 +119,9 @@
     <script>
         appInit();
 
+        // Add new task from the form data
+        catLoad();
+
         // Range Slider showing priority level.
         let slider = document.getElementById("mySlider");
         let priority = document.getElementById("priority");
@@ -146,9 +143,6 @@
         document.getElementById('new-task-form').addEventListener('click', function(event){
             event.preventDefault();
         });
-
-        // Add new task from the form data
-        
 
     </script>
 </html>
