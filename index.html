@@ -143,18 +143,12 @@
             }
         }
         // Form Action
-        document.getElementById('new-task-form').addEventListener("click", function(event){
-            event.preventDefault()
+        document.getElementById('new-task-form').addEventListener('click', function(event){
+            event.preventDefault();
         });
 
-        // Add new category
-        function newTaskCategory() {
-            let newCategory = document.getElementById('new-task-category').value;
-            if(newCategory != "") { 
-                addCat(newCategory);
-            } else {
-                console.log('Error: Please enter a category');
-            }
-        }
+        // Add new task from the form data
+        
+
     </script>
 </html>

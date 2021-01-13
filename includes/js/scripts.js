@@ -29,9 +29,9 @@ todoData = {
     id : "",
     user : "",
     category : {
-        c1 : "general",
-        c2 : "home",
-        c3 : "work"
+        c1 : "General",
+        c2 : "Home",
+        c3 : "Work"
     },
     priority : {
         p1 : "high",
@@ -44,9 +44,8 @@ todoData = {
             description : "Description for task 1",
             date_due : "30/01/2021",
             time_due : "10:00",
-            category : "general",
             priority : "medium",
-            tags : ["general"],
+            tags : ["General"],
             completed : false
         },
         task2 : {
@@ -54,9 +53,8 @@ todoData = {
             description : "Description for task 2",
             date_due : "30/01/2021",
             time_due : "10:00",
-            category : "work",
             priority : "high",
-            tags : ["work"],
+            tags : ["Work"],
             completed : false
         },
         task3 : {
@@ -64,9 +62,8 @@ todoData = {
             description : "Description for task 3",
             date_due : "30/01/2021",
             time_due : "10:00",
-            category : "home",
             priority : "low",
-            tags : ["home"],
+            tags : ["Home"],
             completed : false
         }
     },
@@ -156,6 +153,7 @@ Functions:
 APP_F1. Simple function to get all store categories and return them in an array
 APP_F2. Simple function to retrieve all the tasks stored locally
 APP_F3. Get the current task count in local storage
+APP_F4. Create new category class and add new category to local storage.
 
 Classes:
 
@@ -167,12 +165,11 @@ APP_C3. Class for instantiating new priority levels
 
 // APP_C1. Main class for instantiating new tasks
 class Task {
-    constructor(title, description, date_due, time_due, category, priority, tags, completed) {
+    constructor(title, description, date_due, time_due, priority, tags, completed) {
         this.title = title;
         this.description = description;
         this.date_due = date_due;
         this.time_due = time_due;
-        this.category = category;
         this.priority = priority;
         this.tags = tags;
         this.completed = completed;
@@ -188,7 +185,6 @@ class Task {
                 userData['todo_data'][task]['description'] = this.description;
                 userData['todo_data'][task]['date_due'] = this.date_due;
                 userData['todo_data'][task]['time_due'] = this.time_due;
-                userData['todo_data'][task]['category'] = this.category;
                 userData['todo_data'][task]['priority'] = this.priority;
                 userData['todo_data'][task]['tags'] = this.tags;
                 userData['todo_data'][task]['completed'] = this.completed;
@@ -286,7 +282,12 @@ function taskCount() {
 }
 
 // APP_F4. Create new category class and add new category to local storage.
-function addCat(value) {
-    let tempCat = new Category(value);
-    tempCat.addCategory();
+function newTaskCategory() {
+    let newCategory = document.getElementById('new-task-category').value;
+    if(newCategory != "") {
+        let tempCat = new Category(newCategory);
+        tempCat.addCategory();
+    } else {
+        console.log('Error: Please enter a category');
+    }
 }
