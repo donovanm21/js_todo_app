@@ -75,18 +75,19 @@
                     <div class="add-task-form">
                         <form>
                             <label class="task-label">Title</label>
-                                <input class="task-input" type="text" placeholder="House Work"/>
+                                <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
-                                <textarea class="task-input" placeholder="Task Description"></textarea>
+                                <textarea class="task-input" id="new-task-description" placeholder="Task Description"></textarea>
                             <label class="task-label">Date Due</label>
-                                <input class="task-input" type="date" />
+                                <input class="task-input" id="new-task-date-due" type="date" />
                             <label class="task-label">Time Due</label>
-                                <input class="task-input" type="time" />
+                                <input class="task-input" id="new-task-time-due" type="time" />
                             <label class="task-label">Priority</label>
-                                <input id="mySlider" class="task-input" type="range" min="1" max="3"/>
+                                <input id="mySlider" class="task-input" id="new-task-priority" type="range" min="1" max="3"/>
                                 <div id="priority"></div>
                             <label class="task-label">Categories</label>
-                                <div>
+                                <!-- Need have the category section generate dynamically -->
+                                <div id="new-task-categories">
                                     <span>General</span>
                                     <input type="checkbox" name="general" value="General"/>
                                     <span>Home</span>
@@ -94,6 +95,7 @@
                                     <span>Work</span>
                                     <input type="checkbox" name="work" value="Work"/>
                                 </div>
+                                <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
                             <input class="submit" type="submit" name="" value="Create"/>
                         </form>
                     </div>
