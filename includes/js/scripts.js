@@ -478,3 +478,13 @@ function catLoad() {
             break;
       }
 }
+
+// APP_F6. Category Array using getter method
+function getCategories(catID) {
+    let catArray = new Category('tempArr');
+    for(i = 0; i < catArray.catArr.length; i++) {
+        document.getElementById(catID).innerHTML += '<div class="category-container" id="'+catID+'-cat-c'+i+'"></div>';
+        document.getElementById(catID+'-cat-c'+i+'').innerHTML += '<label for='+ catArray.catArr[i] +'>'+catArray.catArr[i]+'';
+        document.getElementById(catID+'-cat-c'+i+'').innerHTML += '<input id="c'+ i +'" type="checkbox" name="'+ catArray.catArr[i] +'" value="'+ catArray.catArr[i] +'"></label>';
+    }
+}

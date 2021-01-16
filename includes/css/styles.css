@@ -132,6 +132,7 @@ body {
 }
 .add-task-form {
     width: 90%;
+    max-width: 1000px;
     border: 1px solid pink;
     margin: auto;
 }
@@ -183,4 +184,22 @@ body {
     margin: 0px;
     font-weight: bold;
     text-align: right;
+}
+
+/* Task Preview */
+.task-preview-form {
+    width: 90%;
+    max-width: 1000px;
+    border: 1px solid pink;
+    margin: auto;
+}
+.task-preview-section {
+    border: 1px solid cyan;
+    text-align: center;
+}
+.task-preview-categories {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    justify-content: left;
+    grid-gap: 1px;
 }

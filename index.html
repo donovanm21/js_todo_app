@@ -45,7 +45,7 @@
                 <div class="add-task-section">
                     <h2>Add New Task</h2>
                     <div class="add-task-form">
-                        <form id="new-task-form">
+                        <form id="new-task-form" action="#" method="POST">
                             <label class="task-label">Title</label>
                                 <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
@@ -71,6 +71,37 @@
                     <div></div>
                     <div></div>
                 </div>
+
+                <!-- Task preview section -->
+                <div class="task-preview-section">
+                    <h2>Task Preview</h2>
+                    <div class="task-preview-form">
+                        <form id="task-preview-form" action="#" method="POST">
+                            <label class="task-label">Title</label>
+                                <input class="task-input" id="new-task-title" type="text" placeholder="House Work" value=""/>
+                            <label class="task-label">Description</label>
+                                <textarea class="task-input" id="new-task-description" placeholder="Task Description" value=""></textarea>
+                            <label class="task-label">Date Due</label>
+                                <input class="task-input" id="new-task-date-due" type="date" value=""/>
+                            <label class="task-label">Time Due</label>
+                                <input class="task-input" id="new-task-time-due" type="time" value=""/>
+                            <label class="task-label">Priority</label>
+                                <input id="mySlider" class="task-input" type="range" min="1" max="3" value=""/>
+                                <div id="priority"></div>
+                            <label class="task-label">Categories</label>
+                                <!-- Find a style that creates selectable buttons -->
+                                <div class="task-preview-categories" id="task-preview-categories">
+                                </div>
+                                <!-- Function will grab this input if not empty to create a new category -->
+                                <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
+                            <input class="submit" type="submit" name="" onclick="updateTask();" value="Update Task"/>
+                        </form>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
             <div>
                 <div></div>
@@ -89,10 +120,14 @@
         <footer></footer>
     </body>
     <script>
+        // Initialization of the app on first load
         appInit();
-
-        // Add new task from the form data
+        // Category loader for existing categories
         catLoad();
+        // Categories selection for new tasks
+        getCategories('new-task-categories');
+        // Categories selection for preview of existing tasks
+        getCategories('task-preview-categories');
 
         // Range Slider showing priority level.
         let slider = document.getElementById("mySlider");
@@ -186,20 +221,7 @@
         } else {
             console.log('No new category specified');
         }
-
-        // Category Array using getter method
-        let catArray = new Category('tempArr');
-        console.log(catArray.catArr);
-        for(i = 0; i < catArray.catArr.length; i++) {
-            document.getElementById('new-task-categories').innerHTML += '<div class="category-container" id="cat-c'+i+'"></div>';
-            document.getElementById('cat-c'+i+'').innerHTML += '<label for='+ catArray.catArr[i] +'>'+catArray.catArr[i]+'';
-            document.getElementById('cat-c'+i+'').innerHTML += '<input id="c'+ i +'" type="checkbox" name="'+ catArray.catArr[i] +'" value="'+ catArray.catArr[i] +'"></label>';
-        }
-
-        function catTest() {
-            const cb = document.getElementById('c1');
-            console.log(cb.checked);
-        }
+        
 
     </script>
 </html>
