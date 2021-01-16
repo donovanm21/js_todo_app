@@ -101,6 +101,9 @@ body {
 .icon-completed {
     opacity: 0.5;
 }
+.task-key {
+    display: none;
+}
 
 /* Add button */
 .add-button {
@@ -168,4 +171,16 @@ body {
 }
 .submit:hover {
     background-color: lightgreen;
+}
+.new-task-categories {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    justify-content: left;
+    grid-gap: 1px;
+}
+.category-container {
+    padding: 5px 10px;
+    margin: 0px;
+    font-weight: bold;
+    text-align: right;
 }

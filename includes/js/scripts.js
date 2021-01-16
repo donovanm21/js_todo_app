@@ -239,6 +239,11 @@ class Category {
         }
     }
     // Getter to check the current object count.
+    get catArr() {
+        const localData = getLocalData();
+        const Obj = localData['category'];
+        return Object.values(Obj);
+    }
 }
 
 // APP_C3. Class for new priority levels
@@ -265,11 +270,17 @@ class Category {
     }
 }*/
 
-// APP_F1. Simple function to get all store categories and return them in an array (Get method in category class)
+/* APP_F1. Simple function to get all store categories and return them in an array (Moved to Getter method in category class)
 function catArr() {
     const localData = getLocalData();
     const Obj = localData['category'];
     return Object.values(Obj);
+}*/
+// APP_F1. Get all current task keys
+function taskKeys() {
+    const localData = getLocalData();
+    const Obj = localData['todo_data'];
+    return Object.keys(Obj);
 }
 
 // APP_F2. Simple function to retrieve all the tasks stored locally

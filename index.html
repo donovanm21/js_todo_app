@@ -55,17 +55,11 @@
                             <label class="task-label">Time Due</label>
                                 <input class="task-input" id="new-task-time-due" type="time" />
                             <label class="task-label">Priority</label>
-                                <input id="mySlider" class="task-input" type="range" min="1" max="3"/>
+                                <input id="mySlider" class="task-input" type="range" min="1" max="3" />
                                 <div id="priority"></div>
                             <label class="task-label">Categories</label>
-                                <!-- Need have the category section generate dynamically -->
-                                <div id="new-task-categories">
-                                    <span>General</span>
-                                    <input type="checkbox" name="general" value="General"/>
-                                    <span>Home</span>
-                                    <input type="checkbox" name="home" value="Home"/>
-                                    <span>Work</span>
-                                    <input type="checkbox" name="work" value="Work"/>
+                                <!-- Find a style that creates selectable buttons -->
+                                <div class="new-task-categories" id="new-task-categories">
                                 </div>
                                 <!-- Function will grab this input if not empty to create a new category -->
                                 <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
@@ -122,22 +116,34 @@
             }
         }
         // Form Action
-        document.getElementById('new-task-form').addEventListener('click', function(event){
-            event.preventDefault();
-            let taskPriority = document.getElementById('new-task-priority').value;
-        });
+        //document.getElementById('new-task-form').addEventListener('click', function(event){
+        //    event.preventDefault();
+        //    let taskPriority = document.getElementById('new-task-priority').value;
+        //});
 
         // Add new task
         function addNewTask() {
             let taskTitle = document.getElementById('new-task-title').value;
+            let catArray = new Category('tempArr');
             if(taskTitle != "") {
                 let taskTitle = document.getElementById('new-task-title').value;
                 let taskDescription = document.getElementById('new-task-description').value;
                 let taskDateDue = document.getElementById('new-task-date-due').value;
                 let taskTimeDue = document.getElementById('new-task-time-due').value;
                 let taskPriority = document.getElementById('new-task-priority').value;
-                //let taskTitle = document.getElementById('new-task-categories').value;
-                let tempNewTask = new Task(taskTitle, taskDescription, taskDateDue, taskTimeDue, taskPriority, ['General', 'Home'], false);
+                let taskTags = [];
+                for(i = 0; i < catArray.catArr.length; i++) {
+                    let catSelected = document.getElementById('c'+i+'');
+                    if(catSelected.checked !== false) {
+                        let tempCat = document.getElementById('c'+i+'').value;
+                        taskTags.push(tempCat);
+                    }
+                }
+                let tempNewCategory = document.getElementById('new-task-category').value;
+                if(tempNewCategory != "") {
+                    taskTags.push(tempNewCategory);
+                }
+                let tempNewTask = new Task(taskTitle, taskDescription, taskDateDue, taskTimeDue, taskPriority, taskTags, false);
                 tempNewTask.addTask();
                 newTaskCategory();
             } else {
@@ -149,8 +155,10 @@
         // Get all existing task from storage
         function getTasks() {
             let taskArray = taskArr();
+            let taskKeysArray = taskKeys();
             for(i = 0; i < taskArray.length; i++) {
                 document.getElementById('task-wrapper').innerHTML += '<div class="task-item" id="task-item'+i+'">';
+                document.getElementById('task-item'+i+'').innerHTML += '<div name="task-key" class="task-key"><textarea id="task-key'+i+'">'+ taskKeysArray[i] +'</textarea></div>';
                 document.getElementById('task-item'+i+'').innerHTML += '<div class="task-text">'+ taskArray[i]['title'] +'</div>';
                 if(taskArray[i]['priority'] == "High") {
                     for(n = 0; n < taskArray[i]['tags'].length; n++) {
@@ -169,10 +177,6 @@
             }
         }
 
-        // Categories array - WIP
-        //if(cat1 != "") {
-            //return cat1;
-        //}
         // New category - WIP
         let newCat = document.getElementById('new-task-category').value;
         if(newCat != "") {
@@ -182,5 +186,20 @@
         } else {
             console.log('No new category specified');
         }
+
+        // Category Array using getter method
+        let catArray = new Category('tempArr');
+        console.log(catArray.catArr);
+        for(i = 0; i < catArray.catArr.length; i++) {
+            document.getElementById('new-task-categories').innerHTML += '<div class="category-container" id="cat-c'+i+'"></div>';
+            document.getElementById('cat-c'+i+'').innerHTML += '<label for='+ catArray.catArr[i] +'>'+catArray.catArr[i]+'';
+            document.getElementById('cat-c'+i+'').innerHTML += '<input id="c'+ i +'" type="checkbox" name="'+ catArray.catArr[i] +'" value="'+ catArray.catArr[i] +'"></label>';
+        }
+
+        function catTest() {
+            const cb = document.getElementById('c1');
+            console.log(cb.checked);
+        }
+
     </script>
 </html>
