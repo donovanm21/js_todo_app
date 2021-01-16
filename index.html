@@ -26,33 +26,11 @@
                 <!-- Task Section -->
                 <div class="task-list">
                     <h2 class="center">ToDo List</h2>
-                    <div class="task-wrapper">
-                        <div class="task-item">
-                            <div class="task-text">Example 1</div>
-                            <div class="icon-category icon-priority-high">G</div>
-                            <div class="icon-category icon-priority-high">H</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-text">Example 2</div>
-                            <div class="icon-category icon-priority-medium">G</div>
-                            <div class="icon-category icon-priority-medium">F</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-text">Example 3</div>
-                            <div class="icon-category icon-priority-low">G</div>
-                            <div class="clear"></div>
-                        </div>
+                    <div class="task-wrapper" id="task-wrapper">
                         <div class="task-item">
                             <div class="task-text task-completed">Example 4</div>
                             <div class="icon-category icon-priority-medium icon-completed">G</div>
                             <div class="icon-category icon-priority-medium icon-completed">F</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-text">Example 5</div>
-                            <div class="icon-category icon-priority-high">G</div>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -149,7 +127,6 @@
             let taskPriority = document.getElementById('new-task-priority').value;
         });
 
-
         // Add new task
         function addNewTask() {
             let taskTitle = document.getElementById('new-task-title').value;
@@ -161,11 +138,49 @@
                 let taskPriority = document.getElementById('new-task-priority').value;
                 //let taskTitle = document.getElementById('new-task-categories').value;
                 let tempNewTask = new Task(taskTitle, taskDescription, taskDateDue, taskTimeDue, taskPriority, ['General', 'Home'], false);
-                tempNewTask.addTask('task4');
+                tempNewTask.addTask();
                 newTaskCategory();
             } else {
                 console.log('Error: Please fill in all the fields');
             }
+        }
+        getTasks();
+        //console.log(taskArr());
+        // Get all existing task from storage
+        function getTasks() {
+            let taskArray = taskArr();
+            for(i = 0; i < taskArray.length; i++) {
+                document.getElementById('task-wrapper').innerHTML += '<div class="task-item" id="task-item'+i+'">';
+                document.getElementById('task-item'+i+'').innerHTML += '<div class="task-text">'+ taskArray[i]['title'] +'</div>';
+                if(taskArray[i]['priority'] == "High") {
+                    for(n = 0; n < taskArray[i]['tags'].length; n++) {
+                        document.getElementById('task-item'+i+'').innerHTML += '<div class="icon-category icon-priority-high">'+ taskArray[i]['tags'][n][0] +'</div>';
+                    }
+                } else if(taskArray[i]['priority'] == "Medium") {
+                    for(n = 0; n < taskArray[i]['tags'].length; n++) {
+                        document.getElementById('task-item'+i+'').innerHTML += '<div class="icon-category icon-priority-medium">'+ taskArray[i]['tags'][n][0] +'</div>';
+                    }
+                } else {
+                    for(n = 0; n < taskArray[i]['tags'].length; n++) {
+                        document.getElementById('task-item'+i+'').innerHTML += '<div class="icon-category icon-priority-low">'+ taskArray[i]['tags'][n][0] +'</div>';
+                    }
+                }
+                document.getElementById('task-item'+i+'').innerHTML += '<div class="clear"></div>';
+            }
+        }
+
+        // Categories array - WIP
+        //if(cat1 != "") {
+            //return cat1;
+        //}
+        // New category - WIP
+        let newCat = document.getElementById('new-task-category').value;
+        if(newCat != "") {
+            function returnCat() {
+                return newCat;
+            }
+        } else {
+            console.log('No new category specified');
         }
     </script>
 </html>

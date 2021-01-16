@@ -34,9 +34,9 @@ todoData = {
         c3 : "Work"
     },
     priority : {
-        p1 : "high",
-        p2 : "medium",
-        p3 : "low"
+        p1 : "High",
+        p2 : "Medium",
+        p3 : "Low"
     },
     todo_data : {
         task1 : {
@@ -44,7 +44,7 @@ todoData = {
             description : "Description for task 1",
             date_due : "30/01/2021",
             time_due : "10:00",
-            priority : "medium",
+            priority : "Medium",
             tags : ["General"],
             completed : false
         },
@@ -53,7 +53,7 @@ todoData = {
             description : "Description for task 2",
             date_due : "30/01/2021",
             time_due : "10:00",
-            priority : "high",
+            priority : "High",
             tags : ["Work"],
             completed : false
         },
@@ -62,7 +62,7 @@ todoData = {
             description : "Description for task 3",
             date_due : "30/01/2021",
             time_due : "10:00",
-            priority : "low",
+            priority : "Low",
             tags : ["Home"],
             completed : false
         }
@@ -177,18 +177,21 @@ class Task {
     }
 
     // Method to write new task to local storage
-    addTask(task) {
+    addTask() {
         if(localStorage.getItem('userData') != null) {
             const userData = getLocalData();
-            if(userData['todo_data'][task] == null) {
-                userData['todo_data'][task] = {};
-                userData['todo_data'][task]['title'] = this.title;
-                userData['todo_data'][task]['description'] = this.description;
-                userData['todo_data'][task]['date_due'] = this.date_due;
-                userData['todo_data'][task]['time_due'] = this.time_due;
-                userData['todo_data'][task]['priority'] = this.priority;
-                userData['todo_data'][task]['tags'] = this.tags;
-                userData['todo_data'][task]['completed'] = this.completed;
+            const obj = userData['todo_data'];
+            let objLen = Object.keys(obj).length;
+            const taskNum = objLen + 1;
+            if(userData['todo_data']['task' + taskNum] == null) {
+                userData['todo_data']['task' + taskNum] = {};
+                userData['todo_data']['task' + taskNum]['title'] = this.title;
+                userData['todo_data']['task' + taskNum]['description'] = this.description;
+                userData['todo_data']['task' + taskNum]['date_due'] = this.date_due;
+                userData['todo_data']['task' + taskNum]['time_due'] = this.time_due;
+                userData['todo_data']['task' + taskNum]['priority'] = this.priority;
+                userData['todo_data']['task' + taskNum]['tags'] = this.tags;
+                userData['todo_data']['task' + taskNum]['completed'] = this.completed;
                 parseData(userData);
             } else {
                 console.log('Task name '+ task +' already exist.');
@@ -197,6 +200,7 @@ class Task {
             console.log('APP Error: No local store configured!');
         }
     }
+    // Static method for priority.
 
     // Remove a task
     deleteTask(task) {
@@ -234,10 +238,11 @@ class Category {
             console.log('APP Error: No local store configured!');
         }
     }
+    // Getter to check the current object count.
 }
 
 // APP_C3. Class for new priority levels
-class Priority {
+/*class Priority {
     constructor(value) {
         this.value = value;
     }
@@ -258,9 +263,9 @@ class Priority {
             console.log('APP Error: No local store configured!');
         }
     }
-}
+}*/
 
-// APP_F1. Simple function to get all store categories and return them in an array
+// APP_F1. Simple function to get all store categories and return them in an array (Get method in category class)
 function catArr() {
     const localData = getLocalData();
     const Obj = localData['category'];
