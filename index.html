@@ -30,13 +30,13 @@
                     </div>
                 </div>
                 <!-- Task Button for adding tasks -->
-                <div class="add-task" onclick="alert('New Task');">
+                <div class="add-task" onclick="newTaskToggle();">
                     <div class="add-button">+</div>
                     <div class="clear"></div>
                 </div>
                 
                 <!-- Add new task section -->
-                <div class="add-task-section">
+                <div id="add-task-toggle" class="add-task-section hidden">
                     <h2>Add New Task</h2>
                     <div class="add-task-form">
                         <form id="new-task-form" action="#" method="POST">
@@ -67,7 +67,7 @@
                 </div>
 
                 <!-- Task preview section -->
-                <div class="task-preview-section">
+                <div id="task-preview-toggle" class="task-preview-section hidden">
                     <h2>Task Preview</h2>
                     <div class="task-preview-form">
                         <form id="task-preview-form" action="#" method="POST">
@@ -137,5 +137,14 @@
         //    event.preventDefault();
         //    let taskPriority = document.getElementById('new-task-priority').value;
         //});
+
+        // Display new task form
+        function newTaskToggle(){
+            document.getElementById('add-task-toggle').classList.remove('hidden');
+        }
+        // Display task preview field
+        function previewTaskToggle(){
+            document.getElementById('task-preview-toggle').classList.remove('hidden');
+        }
     </script>
 </html>

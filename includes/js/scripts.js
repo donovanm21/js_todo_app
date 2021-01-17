@@ -556,7 +556,7 @@ function getTasks() {
     let taskArray = taskArr();
     let taskKeysArray = taskKeys();
     for(i = 0; i < taskArray.length; i++) {
-        document.getElementById('task-wrapper').innerHTML += '<a id="'+i+'" onclick="fetchTask(this.id);"><div class="task-item" id="task-item'+i+'"></div></a>';
+        document.getElementById('task-wrapper').innerHTML += '<a id="'+i+'" onclick="fetchTask(this.id);previewTaskToggle();"><div class="task-item" id="task-item'+i+'"></div></a>';
         document.getElementById('task-item'+i+'').innerHTML += '<div name="task-key" class="task-key"><textarea id="task-key'+i+'">'+ taskKeysArray[i] +'</textarea></div>';
         document.getElementById('task-item'+i+'').innerHTML += '<div class="task-text">'+ taskArray[i]['title'] +'</div>';
         if(taskArray[i]['priority'] == "High") {
