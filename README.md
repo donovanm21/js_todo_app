@@ -24,6 +24,8 @@ The app is a self contained local browser based application, making use of the l
 - Add the completed task style to the task list retrieval function.
 - Add the ability to delete a task once the task has been marked as completed.
 - Delete option hidden and will apear once task has been marked as completed.
+- Fix the priority slider not working in both preview and new task.
+- Slider function added.
 
 [Update - 13 Jan 2021]
 
