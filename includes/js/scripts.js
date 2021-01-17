@@ -42,7 +42,7 @@ todoData = {
         task1 : {
             title : "Example 1",
             description : "Description for task 1",
-            date_due : "30/01/2021",
+            date_due : "2021-03-10",
             time_due : "10:00",
             priority : "Medium",
             tags : ["General"],
@@ -51,7 +51,7 @@ todoData = {
         task2 : {
             title : "Example 2",
             description : "Description for task 2",
-            date_due : "30/01/2021",
+            date_due : "2021-03-10",
             time_due : "10:00",
             priority : "High",
             tags : ["Work"],
@@ -60,7 +60,7 @@ todoData = {
         task3 : {
             title : "Example 3",
             description : "Description for task 3",
-            date_due : "30/01/2021",
+            date_due : "2021-03-10",
             time_due : "10:00",
             priority : "Low",
             tags : ["Home"],
@@ -150,11 +150,12 @@ function lastUpdate() {
 
 Functions:
 
-APP_F1. Simple function to get all store categories and return them in an array
+APP_F1. Get all current task keys
 APP_F2. Simple function to retrieve all the tasks stored locally
 APP_F3. Get the current task count in local storage
 APP_F4. Create new category class and add new category to local storage.
 APP_F5. Function to generate the category grid based on element count.
+APP_F6. Category Array using getter method
 
 Classes:
 
@@ -270,12 +271,6 @@ class Category {
     }
 }*/
 
-/* APP_F1. Simple function to get all store categories and return them in an array (Moved to Getter method in category class)
-function catArr() {
-    const localData = getLocalData();
-    const Obj = localData['category'];
-    return Object.values(Obj);
-}*/
 // APP_F1. Get all current task keys
 function taskKeys() {
     const localData = getLocalData();

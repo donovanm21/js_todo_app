@@ -203,3 +203,10 @@ body {
     justify-content: left;
     grid-gap: 1px;
 }
+.task-preview-form textarea {
+    width: 250px;
+    text-align: center;
+    min-height: 100px;
+    outline: none;
+    resize: none;
+}

@@ -10,6 +10,17 @@ The app is a self contained local browser based application, making use of the l
 
 ## Dev updates on App.
 
+[Update - 15 to 17 Jan 2021]
+
+- Built the form to display task info.
+- Add a function to update task info.
+- Added achor links around tasks to populate the preview field base off task id.
+- Add the function to retrieve task info when task is clicked.
+- Populate the preview form with selected task info.
+- Preview for to allow task update and task completion.
+- Categories become selectable again, if ticked the tags will be updated.
+- Priority will be changable as well.
+
 [Update - 13 Jan 2021]
 
 - Built the form to add a new task.

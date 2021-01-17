@@ -27,12 +27,6 @@
                 <div class="task-list">
                     <h2 class="center">ToDo List</h2>
                     <div class="task-wrapper" id="task-wrapper">
-                        <div class="task-item">
-                            <div class="task-text task-completed">Example 4</div>
-                            <div class="icon-category icon-priority-medium icon-completed">G</div>
-                            <div class="icon-category icon-priority-medium icon-completed">F</div>
-                            <div class="clear"></div>
-                        </div>
                     </div>
                 </div>
                 <!-- Task Button for adding tasks -->
@@ -78,13 +72,13 @@
                     <div class="task-preview-form">
                         <form id="task-preview-form" action="#" method="POST">
                             <label class="task-label">Title</label>
-                                <input class="task-input" id="new-task-title" type="text" placeholder="House Work" value=""/>
+                                <input class="task-input" id="task-preview-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
-                                <textarea class="task-input" id="new-task-description" placeholder="Task Description" value=""></textarea>
+                                <textarea class="task-input" id="task-preview-description" placeholder="Task Description" value=""></textarea>
                             <label class="task-label">Date Due</label>
-                                <input class="task-input" id="new-task-date-due" type="date" value=""/>
+                                <input class="task-input" id="task-preview-date-due" type="date" value=""/>
                             <label class="task-label">Time Due</label>
-                                <input class="task-input" id="new-task-time-due" type="time" value=""/>
+                                <input class="task-input" id="task-preview-time-due" type="time" value=""/>
                             <label class="task-label">Priority</label>
                                 <input id="mySlider" class="task-input" type="range" min="1" max="3" value=""/>
                                 <div id="priority"></div>
@@ -94,7 +88,8 @@
                                 </div>
                                 <!-- Function will grab this input if not empty to create a new category -->
                                 <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
-                            <input class="submit" type="submit" name="" onclick="updateTask();" value="Update Task"/>
+                            <input class="submit" type="submit" name="" onclick="updateTask();" value="Update"/>
+                            <input class="submit" type="submit" name="" onclick="completeTask();" value="Complete"/>
                         </form>
                     </div>
                     <div></div>
@@ -116,6 +111,14 @@
             <div></div>
             <div></div>
         </div>
+        <!-- Completed Task Example
+        <div class="task-item">
+            <div class="task-text task-completed">Example 4</div>
+            <div class="icon-category icon-priority-medium icon-completed">G</div>
+            <div class="icon-category icon-priority-medium icon-completed">F</div>
+            <div class="clear"></div>
+        </div>
+        -->
         <!-- Footer Section -->
         <footer></footer>
     </body>
@@ -192,7 +195,7 @@
             let taskArray = taskArr();
             let taskKeysArray = taskKeys();
             for(i = 0; i < taskArray.length; i++) {
-                document.getElementById('task-wrapper').innerHTML += '<div class="task-item" id="task-item'+i+'">';
+                document.getElementById('task-wrapper').innerHTML += '<a id="'+i+'" onclick="fetchTask(this.id);"><div class="task-item" id="task-item'+i+'"></div></a>';
                 document.getElementById('task-item'+i+'').innerHTML += '<div name="task-key" class="task-key"><textarea id="task-key'+i+'">'+ taskKeysArray[i] +'</textarea></div>';
                 document.getElementById('task-item'+i+'').innerHTML += '<div class="task-text">'+ taskArray[i]['title'] +'</div>';
                 if(taskArray[i]['priority'] == "High") {
@@ -211,7 +214,21 @@
                 document.getElementById('task-item'+i+'').innerHTML += '<div class="clear"></div>';
             }
         }
-
+        // Fetch task info and display it in preview
+        function fetchTask(clickedId) {
+            const taskArrKey = taskArr();
+            let taskTitle = taskArrKey[clickedId]['title'];
+            let taskDescription = taskArrKey[clickedId]['description'];
+            let taskDateDue = taskArrKey[clickedId]['date_due'];
+            let taskTimeDue = taskArrKey[clickedId]['time_due'];
+            let taskPriority = taskArrKey[clickedId]['priority'];
+            let taskTags = taskArrKey[clickedId]['tags'];
+            console.log(taskTitle + ', ' + taskDescription);
+            document.getElementById('task-preview-title').value = taskTitle;
+            document.getElementById('task-preview-description').value = taskDescription;
+            document.getElementById('task-preview-date-due').value = taskDateDue;
+            document.getElementById('task-preview-time-due').value = taskTimeDue;
+        }
         // New category - WIP
         let newCat = document.getElementById('new-task-category').value;
         if(newCat != "") {
@@ -222,6 +239,6 @@
             console.log('No new category specified');
         }
         
-
+        
     </script>
 </html>
