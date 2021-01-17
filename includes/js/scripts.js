@@ -183,7 +183,7 @@ class Task {
             const userData = getLocalData();
             const obj = userData['todo_data'];
             let objLen = Object.keys(obj).length;
-            const taskNum = objLen + 1;
+            const taskNum = objLen;
             if(userData['todo_data']['task' + taskNum] == null) {
                 userData['todo_data']['task' + taskNum] = {};
                 userData['todo_data']['task' + taskNum]['title'] = this.title;
