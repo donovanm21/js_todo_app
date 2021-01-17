@@ -39,7 +39,7 @@ todoData = {
         p3 : "Low"
     },
     todo_data : {
-        task1 : {
+        task0 : {
             title : "Example 1",
             description : "Description for task 1",
             date_due : "2021-03-10",
@@ -48,7 +48,7 @@ todoData = {
             tags : ["General"],
             completed : false
         },
-        task2 : {
+        task1 : {
             title : "Example 2",
             description : "Description for task 2",
             date_due : "2021-03-10",
@@ -57,7 +57,7 @@ todoData = {
             tags : ["Work"],
             completed : false
         },
-        task3 : {
+        task2 : {
             title : "Example 3",
             description : "Description for task 3",
             date_due : "2021-03-10",
@@ -296,8 +296,12 @@ function taskCount() {
 // APP_F4. Create new category class and add new category to local storage.
 function newTaskCategory() {
     let newCategory = document.getElementById('new-task-category').value;
+    let previewCategory = document.getElementById('task-preview-category').value;
     if(newCategory != "") {
         let tempCat = new Category(newCategory);
+        tempCat.addCategory();
+    } else if(previewCategory != "") {
+        let tempCat = new Category(previewCategory);
         tempCat.addCategory();
     } else {
         console.log('Error: Please enter a category');

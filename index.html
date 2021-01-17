@@ -71,6 +71,7 @@
                     <h2>Task Preview</h2>
                     <div class="task-preview-form">
                         <form id="task-preview-form" action="#" method="POST">
+                            <input type="hidden" id="task-preview-taskkey" />
                             <label class="task-label">Title</label>
                                 <input class="task-input" id="task-preview-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
@@ -87,9 +88,9 @@
                                 <div class="task-preview-categories" id="task-preview-categories">
                                 </div>
                                 <!-- Function will grab this input if not empty to create a new category -->
-                                <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
-                            <input class="submit" type="submit" name="" onclick="updateTask();" value="Update"/>
-                            <input class="submit" type="submit" name="" onclick="completeTask();" value="Complete"/>
+                                <input class="task-input new-category" id="task-preview-category" type="text" placeholder="New Category"/>
+                            <input class="submit" type="submit" name="" onclick="updateTask('u');" value="Update"/>
+                            <input class="submit" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
                         </form>
                     </div>
                     <div></div>
@@ -127,6 +128,8 @@
         appInit();
         // Category loader for existing categories
         catLoad();
+        // Get all existing tasks
+        getTasks();
         // Categories selection for new tasks
         getCategories('new-task-categories');
         // Categories selection for preview of existing tasks
@@ -188,8 +191,7 @@
                 console.log('Error: Please fill in all the fields');
             }
         }
-        getTasks();
-        //console.log(taskArr());
+
         // Get all existing task from storage
         function getTasks() {
             let taskArray = taskArr();
@@ -212,22 +214,30 @@
                     }
                 }
                 document.getElementById('task-item'+i+'').innerHTML += '<div class="clear"></div>';
+                let taskCompleted = taskArray[i]['completed'];
+                if(taskCompleted == true) {
+                    let newClass = document.getElementById('task-item'+i);
+                    newClass.classList.add('task-completed');
+                }
             }
         }
+
         // Fetch task info and display it in preview
         function fetchTask(clickedId) {
             const taskArrKey = taskArr();
+            let taskKey = 'task'+clickedId;
             let taskTitle = taskArrKey[clickedId]['title'];
             let taskDescription = taskArrKey[clickedId]['description'];
             let taskDateDue = taskArrKey[clickedId]['date_due'];
             let taskTimeDue = taskArrKey[clickedId]['time_due'];
             let taskPriority = taskArrKey[clickedId]['priority'];
             let taskTags = taskArrKey[clickedId]['tags'];
-            console.log(taskTitle + ', ' + taskDescription);
+            document.getElementById('task-preview-taskkey').value = taskKey;
             document.getElementById('task-preview-title').value = taskTitle;
             document.getElementById('task-preview-description').value = taskDescription;
             document.getElementById('task-preview-date-due').value = taskDateDue;
             document.getElementById('task-preview-time-due').value = taskTimeDue;
+            
         }
         // New category - WIP
         let newCat = document.getElementById('new-task-category').value;
@@ -239,6 +249,48 @@
             console.log('No new category specified');
         }
         
-        
+        // Update task info
+        function updateTask(value) {
+            let taskTitle = document.getElementById('task-preview-title').value;
+            let catArray = new Category('tempArr');
+            if(taskTitle != "") {
+                let taskKey = document.getElementById('task-preview-taskkey').value;
+                let taskTitle = document.getElementById('task-preview-title').value;
+                let taskDescription = document.getElementById('task-preview-description').value;
+                let taskDateDue = document.getElementById('task-preview-date-due').value;
+                let taskTimeDue = document.getElementById('task-preview-time-due').value;
+                //let taskPriority = document.getElementById('task-preview-priority').value;
+                let taskTags = [];
+                for(i = 0; i < catArray.catArr.length; i++) {
+                    let catSelected = document.getElementById('c'+i+'');
+                    if(catSelected.checked !== false) {
+                        let tempCat = document.getElementById('c'+i+'').value;
+                        taskTags.push(tempCat);
+                    }
+                }
+                let tempNewCategory = document.getElementById('task-preview-category').value;
+                if(tempNewCategory != "") {
+                    taskTags.push(tempNewCategory);
+                }
+                let localData = getLocalData();
+                if(value == 'u') {
+                    localData['todo_data'][taskKey]['title'] = taskTitle;
+                    localData['todo_data'][taskKey]['description'] = taskDescription;
+                    localData['todo_data'][taskKey]['date_due'] = taskDateDue;
+                    localData['todo_data'][taskKey]['time_due'] = taskTimeDue;  
+                    //localData['todo_data'][taskKey]['priority'] = taskPriority;
+                    localData['todo_data'][taskKey]['tags'] = taskTags;
+                } else if(value == 'c'){
+                    localData['todo_data'][taskKey]['completed'] = true;
+                } else {
+                    console.log('Task Update');
+                }
+                parseData(localData);
+                // Add new Category if one is specified
+                newTaskCategory();
+            } else {
+                console.log('Error: Please fill in all the fields');
+            }
+        }
     </script>
 </html>

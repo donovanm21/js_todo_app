@@ -20,6 +20,8 @@ The app is a self contained local browser based application, making use of the l
 - Preview for to allow task update and task completion.
 - Categories become selectable again, if ticked the tags will be updated.
 - Priority will be changable as well.
+- Update the complete task to updateTask fucntion.
+- Add the completed task style to the task list retrieval function.
 
 [Update - 13 Jan 2021]
 
