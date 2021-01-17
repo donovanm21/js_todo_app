@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <!-- Task Button for adding tasks -->
-                <div class="add-task">
+                <div class="add-task" onclick="alert('New Task');">
                     <div class="add-button">+</div>
                     <div class="clear"></div>
                 </div>
@@ -49,8 +49,8 @@
                             <label class="task-label">Time Due</label>
                                 <input class="task-input" id="new-task-time-due" type="time" />
                             <label class="task-label">Priority</label>
-                                <input id="mySlider" class="task-input" type="range" min="1" max="3" />
-                                <div id="priority"></div>
+                                <input id="new-task-slider" class="task-input" type="range" min="1" max="3" />
+                                <div id="new-task-priority"></div>
                             <label class="task-label">Categories</label>
                                 <!-- Find a style that creates selectable buttons -->
                                 <div class="new-task-categories" id="new-task-categories">
@@ -81,8 +81,8 @@
                             <label class="task-label">Time Due</label>
                                 <input class="task-input" id="task-preview-time-due" type="time" value=""/>
                             <label class="task-label">Priority</label>
-                                <input id="mySlider" class="task-input" type="range" min="1" max="3" value=""/>
-                                <div id="priority"></div>
+                                <input id="task-preview-slider" class="task-input" type="range" min="1" max="3" value=""/>
+                                <div id="task-preview-priority"></div>
                             <label class="task-label">Categories</label>
                                 <!-- Find a style that creates selectable buttons -->
                                 <div class="task-preview-categories" id="task-preview-categories">
@@ -113,14 +113,6 @@
             <div></div>
             <div></div>
         </div>
-        <!-- Completed Task Example
-        <div class="task-item">
-            <div class="task-text task-completed">Example 4</div>
-            <div class="icon-category icon-priority-medium icon-completed">G</div>
-            <div class="icon-category icon-priority-medium icon-completed">F</div>
-            <div class="clear"></div>
-        </div>
-        -->
         <!-- Footer Section -->
         <footer></footer>
     </body>
@@ -132,31 +124,37 @@
         // Get all existing tasks
         getTasks();
         // Categories selection for new tasks
-        getCategories('new-task-categories');
+        getCategories('n','new-task-categories');
         // Categories selection for preview of existing tasks
-        getCategories('task-preview-categories');
+        getCategories('p','task-preview-categories');
+        // Slider for new tasks
+        sliderDisplay('new-task-slider', 'new-task-priority');
+        // Slider for task preview and update
+        sliderDisplay('task-preview-slider', 'task-preview-priority');
 
         // Range Slider showing priority level.
-        let slider = document.getElementById("mySlider");
-        let priority = document.getElementById("priority");
-        if(slider.value == 2){
-            priority.innerHTML = '<textarea style="color: orange; display: none;" id="new-task-priority">Medium</textarea>';
-            priority.innerHTML += '<p style="color: orange;">Medium</p>';
-        }
-        
-        // Update priority output on slider value change.
-        slider.oninput = function() {
-            if(slider.value == 1){
-            priority.innerHTML = '<textarea style="color: lightblue; display: none;" id="new-task-priority">Low</textarea>';
-            priority.innerHTML += '<p style="color: lightblue;">Low</p>';
-            } else if(slider.value == 2) {
-                priority.innerHTML = '<textarea style="color: orange; display: none;" id="new-task-priority">Medium</textarea>';
+        function sliderDisplay(sliderID, priorityID) {
+            let slider = document.getElementById(sliderID);
+            let priority = document.getElementById(priorityID);
+            if(slider.value == 2){
+                priority.innerHTML = '<textarea style="color: orange; display: none;" id="'+priorityID+'-ta">Medium</textarea>';
                 priority.innerHTML += '<p style="color: orange;">Medium</p>';
-            } else {
-                priority.innerHTML = '<textarea style="color: red; display: none;" id="new-task-priority">High</textarea>';
-                priority.innerHTML += '<p style="color: red;">High</p>';
+            }
+            // Update priority output on slider value change.
+            slider.oninput = function() {
+                if(slider.value == 1){
+                priority.innerHTML = '<textarea style="color: lightblue; display: none;" id="'+priorityID+'-ta">Low</textarea>';
+                priority.innerHTML += '<p style="color: lightblue;">Low</p>';
+                } else if(slider.value == 2) {
+                    priority.innerHTML = '<textarea style="color: orange; display: none;" id="'+priorityID+'-ta">Medium</textarea>';
+                    priority.innerHTML += '<p style="color: orange;">Medium</p>';
+                } else {
+                    priority.innerHTML = '<textarea style="color: red; display: none;" id="'+priorityID+'-ta">High</textarea>';
+                    priority.innerHTML += '<p style="color: red;">High</p>';
+                }
             }
         }
+        
         // Form Action
         //document.getElementById('new-task-form').addEventListener('click', function(event){
         //    event.preventDefault();
@@ -172,12 +170,17 @@
                 let taskDescription = document.getElementById('new-task-description').value;
                 let taskDateDue = document.getElementById('new-task-date-due').value;
                 let taskTimeDue = document.getElementById('new-task-time-due').value;
-                let taskPriority = document.getElementById('new-task-priority').value;
+                let taskPriority = document.getElementById('new-task-priority-ta').value;
                 let taskTags = [];
                 for(i = 0; i < catArray.catArr.length; i++) {
-                    let catSelected = document.getElementById('c'+i+'');
-                    if(catSelected.checked !== false) {
-                        let tempCat = document.getElementById('c'+i+'').value;
+                    let nCatSelected = document.getElementById('n-c'+i+'');
+                    if(nCatSelected.checked !== false) {
+                        let tempCat = document.getElementById('n-c'+i+'').value;
+                        taskTags.push(tempCat);
+                    }
+                    let pCatSelected = document.getElementById('p-c'+i+'');
+                    if(pCatSelected.checked !== false) {
+                        let tempCat = document.getElementById('p-c'+i+'').value;
                         taskTags.push(tempCat);
                     }
                 }
@@ -255,12 +258,17 @@
                 let taskDescription = document.getElementById('task-preview-description').value;
                 let taskDateDue = document.getElementById('task-preview-date-due').value;
                 let taskTimeDue = document.getElementById('task-preview-time-due').value;
-                //let taskPriority = document.getElementById('task-preview-priority').value;
+                let taskPriority = document.getElementById('task-preview-priority-ta').value;
                 let taskTags = [];
                 for(i = 0; i < catArray.catArr.length; i++) {
-                    let catSelected = document.getElementById('c'+i+'');
-                    if(catSelected.checked !== false) {
-                        let tempCat = document.getElementById('c'+i+'').value;
+                    let nCatSelected = document.getElementById('n-c'+i+'');
+                    if(nCatSelected.checked !== false) {
+                        let tempCat = document.getElementById('n-c'+i+'').value;
+                        taskTags.push(tempCat);
+                    }
+                    let pCatSelected = document.getElementById('p-c'+i+'');
+                    if(pCatSelected.checked !== false) {
+                        let tempCat = document.getElementById('p-c'+i+'').value;
                         taskTags.push(tempCat);
                     }
                 }
@@ -274,7 +282,7 @@
                     localData['todo_data'][taskKey]['description'] = taskDescription;
                     localData['todo_data'][taskKey]['date_due'] = taskDateDue;
                     localData['todo_data'][taskKey]['time_due'] = taskTimeDue;  
-                    //localData['todo_data'][taskKey]['priority'] = taskPriority;
+                    localData['todo_data'][taskKey]['priority'] = taskPriority;
                     localData['todo_data'][taskKey]['tags'] = taskTags;
                 } else if(value == 'c'){
                     localData['todo_data'][taskKey]['completed'] = true;

@@ -22,6 +22,8 @@ The app is a self contained local browser based application, making use of the l
 - Priority will be changable as well.
 - Update the complete task to updateTask fucntion.
 - Add the completed task style to the task list retrieval function.
+- Add the ability to delete a task once the task has been marked as completed.
+- Delete option hidden and will apear once task has been marked as completed.
 
 [Update - 13 Jan 2021]
 
