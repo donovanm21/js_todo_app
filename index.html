@@ -91,6 +91,7 @@
                                 <input class="task-input new-category" id="task-preview-category" type="text" placeholder="New Category"/>
                             <input class="submit" type="submit" name="" onclick="updateTask('u');" value="Update"/>
                             <input class="submit" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
+                            <input class="submit hidden" id="task-delete" type="submit" name="" onclick="updateTask('d');" value="Delete"/>
                         </form>
                     </div>
                     <div></div>
@@ -237,7 +238,11 @@
             document.getElementById('task-preview-description').value = taskDescription;
             document.getElementById('task-preview-date-due').value = taskDateDue;
             document.getElementById('task-preview-time-due').value = taskTimeDue;
-            
+            let taskCompleted = taskArrKey[clickedId]['completed'];
+            if(taskCompleted == true) {
+                let taskDelete = document.getElementById('task-delete');
+                taskDelete.classList.add('not-hidden');
+            }
         }
         
         // Update task info
@@ -273,6 +278,9 @@
                     localData['todo_data'][taskKey]['tags'] = taskTags;
                 } else if(value == 'c'){
                     localData['todo_data'][taskKey]['completed'] = true;
+                } else if(value == 'd'){
+                    let taskObj = localData['todo_data'];
+                    delete taskObj[taskKey];
                 } else {
                     console.log('Task Update');
                 }

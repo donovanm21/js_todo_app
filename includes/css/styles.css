@@ -210,3 +210,9 @@ body {
     outline: none;
     resize: none;
 }
+.hidden {
+    display: none;
+}
+.not-hidden {
+    display: block;
+}
