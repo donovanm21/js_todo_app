@@ -18,6 +18,9 @@ The app is a self contained local browser based application, making use of the l
 - Add responsive styling for mobile and ensure it scales accordingly.
 - Optimize all the elements for most efficient load times.
 - UI based on the old Windows XP "High Contrast" theme.
+- Width changed to be responsive based on screen width.
+- Styles applied to overlay the new and preview forms over UI.
+- All styles ammended to fix any visible alignment issues.
 
 <img src="https://raw.githubusercontent.com/donovanm21/js_todo_app/main/wip_files/img/retro_app.png" />
 
