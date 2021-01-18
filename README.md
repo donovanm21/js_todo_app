@@ -8,6 +8,11 @@ The user experience need to be seamless and flow throughout the application with
 
 The app is a self contained local browser based application, making use of the local storage supported by most modern browsers.
 
+## App v1.0 done
+
+- All basic funtionality working.
+- Styled for mobile use.
+
 ## Dev updates on App.
 
 [Update - 18 Jan 2021]
