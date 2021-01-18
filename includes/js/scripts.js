@@ -584,7 +584,7 @@ function getTasks() {
 // APP_F10. Fetch task info and display it in preview
 function fetchTask(clickedId) {
     const taskArrKey = taskArr();
-    let taskKey = 'task'+clickedId;
+    let taskKey = document.getElementById('task-key'+clickedId).value;
     let taskTitle = taskArrKey[clickedId]['title'];
     let taskDescription = taskArrKey[clickedId]['description'];
     let taskDateDue = taskArrKey[clickedId]['date_due'];
@@ -600,6 +600,13 @@ function fetchTask(clickedId) {
     if(taskCompleted == true) {
         let taskDelete = document.getElementById('task-delete');
         taskDelete.classList.add('not-hidden');
+        let taskUndo = document.getElementById('task-undo');
+        taskUndo.classList.add('not-hidden');
+    } else {
+        let taskCompleted = document.getElementById('task-completed');
+        taskCompleted.classList.add('not-hidden');
+        let taskUpdate = document.getElementById('task-update');
+        taskUpdate.classList.add('not-hidden');
     }
 }
 
@@ -641,6 +648,8 @@ function updateTask(value) {
             localData['todo_data'][taskKey]['tags'] = taskTags;
         } else if(value == 'c'){
             localData['todo_data'][taskKey]['completed'] = true;
+        } else if(value == 'un'){
+            localData['todo_data'][taskKey]['completed'] = false;
         } else if(value == 'd'){
             let taskObj = localData['todo_data'];
             delete taskObj[taskKey];

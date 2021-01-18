@@ -56,9 +56,8 @@ body {
     }
 }
 .content {
-    width: 98%;
-    min-height: 785px;
-    margin: 40px auto;
+    width: 100%;
+    margin: 0px auto 20px auto;
     position: relative;
 }
 .header {
@@ -93,18 +92,21 @@ body {
 
 /* Categories Section */
 .categories {
+    width: 98%;
     text-align: center;
     border-top: 2px solid green;
     border-bottom: 2px solid yellow;
     border-right: 2px solid blue;
     border-left: 2px solid red;
     padding-bottom: 20px;
-    margin: 1px;
+    margin: 1px auto;
 }
 
 /* Task Section */
 .task-list {
     min-height: 280px;
+    width: 98%;
+    margin: auto;
 }
 .task-wrapper {
     padding-inline-start: 0px;
@@ -159,8 +161,8 @@ body {
 	height: 50px;
 	float: right;
 	margin-top: 10px;
-	margin-right: 10px;
-	border: 1px solid black;
+    margin-right: 10px;
+    border: 1px solid black;
 }
 .add-button:hover img {
 	background: #0066ff;

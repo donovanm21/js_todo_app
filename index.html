@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="description" content="Javascript ToDo Application" >
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
         <script src="includes/js/scripts.js"></script>
         <link rel="stylesheet" href="includes/css/styles.css" >
         <title>Retro JS | ToDo App</title>
@@ -36,12 +36,11 @@
                     </div>
                     <div class="clear"></div>
                 </div>
-                
                 <!-- Add new task section -->
                 <div id="add-task-toggle" class="add-task-section hidden">
                     <h2>Add New Task</h2>
                     <div class="add-task-form">
-                        <form id="new-task-form" action="#" method="POST">
+                        <form id="new-task-form" action="" method="POST">
                             <label class="task-label">Title</label>
                                 <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
@@ -62,17 +61,12 @@
                             <input class="submit" type="submit" name="" onclick="addNewTask();" value="Create"/>
                         </form>
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
                 </div>
-
                 <!-- Task preview section -->
                 <div id="task-preview-toggle" class="task-preview-section hidden">
                     <h2>Task Preview</h2>
                     <div class="task-preview-form">
-                        <form id="task-preview-form" action="#" method="POST">
+                        <form id="task-preview-form" action="" method="POST">
                             <input type="hidden" id="task-preview-taskkey" />
                             <label class="task-label">Title</label>
                                 <input class="task-input" id="task-preview-title" type="text" placeholder="House Work"/>
@@ -92,30 +86,15 @@
                                 <!-- Function will grab this input if not empty to create a new category -->
                                 <input class="task-input new-category" id="task-preview-category" type="text" placeholder="New Category"/>
                             <div class="buttons">
-                                <input class="submit" type="submit" name="" onclick="updateTask('u');" value="Update"/>
-                                <input class="submit" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
+                                <input class="submit hidden" id="task-update" type="submit" name="" onclick="updateTask('u');" value="Update"/>
+                                <input class="submit hidden" id="task-completed" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
                                 <input class="submit hidden" id="task-delete" type="submit" name="" onclick="updateTask('d');" value="Delete"/>
+                                <input class="submit hidden" id="task-undo" type="submit" name="" onclick="updateTask('un');" value="Un-Complete"/>
                             </div>
                         </form>
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
                 </div>
             </div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
         </div>
         <!-- Footer Section -->
         <footer></footer>
