@@ -10,6 +10,16 @@ The app is a self contained local browser based application, making use of the l
 
 ## Dev updates on App.
 
+[Update - 18 Jan 2021]
+
+- All the app functionality is done, tested and working.
+- Complete the styling and layout of the main app UI.
+- Ensure that the position of the 2 forms are correct.
+- Add responsive styling for mobile and ensure it scales accordingly.
+- Optimize all the elements for most efficient load times.
+
+<img src="https://raw.githubusercontent.com/donovanm21/js_todo_app/main/wip_files/img/retro_app.png" />
+
 [Update - 15 to 17 Jan 2021]
 
 - Built the form to display task info.
