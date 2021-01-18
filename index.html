@@ -31,7 +31,9 @@
                 </div>
                 <!-- Task Button for adding tasks -->
                 <div class="add-task" onclick="newTaskToggle();">
-                    <div class="add-button">+</div>
+                    <div class="add-button">
+	                    <img src="includes/img/plus_y.png"/>
+                    </div>
                     <div class="clear"></div>
                 </div>
                 
@@ -89,9 +91,11 @@
                                 </div>
                                 <!-- Function will grab this input if not empty to create a new category -->
                                 <input class="task-input new-category" id="task-preview-category" type="text" placeholder="New Category"/>
-                            <input class="submit" type="submit" name="" onclick="updateTask('u');" value="Update"/>
-                            <input class="submit" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
-                            <input class="submit hidden" id="task-delete" type="submit" name="" onclick="updateTask('d');" value="Delete"/>
+                            <div class="buttons">
+                                <input class="submit" type="submit" name="" onclick="updateTask('u');" value="Update"/>
+                                <input class="submit" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
+                                <input class="submit hidden" id="task-delete" type="submit" name="" onclick="updateTask('d');" value="Delete"/>
+                            </div>
                         </form>
                     </div>
                     <div></div>

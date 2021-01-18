@@ -4,17 +4,62 @@ body {
     color: white;
 }
 .wrapper {
-    width: 70%;
-    border: 2px solid red;
+    width: 100%;
     margin: auto;
-    min-width: 700px;
+    border-top: 2px solid yellow;
+    border-bottom: 2px solid green;
+    border-left: 2px solid blue;
+    border-right: 2px solid red;
+}
+/* Small devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 500px) {
+    .wrapper {
+        width: 80%;
+        margin: auto;
+        border-top: 2px solid yellow;
+        border-bottom: 2px solid green;
+        border-left: 2px solid blue;
+        border-right: 2px solid red;
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        width: 70%;
+        margin: auto;
+        border-top: 2px solid yellow;
+        border-bottom: 2px solid green;
+        border-left: 2px solid blue;
+        border-right: 2px solid red;
+    }
+}
+ /* Large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .wrapper {
+        width: 50%;
+        margin: auto;
+        border-top: 2px solid yellow;
+        border-bottom: 2px solid green;
+        border-left: 2px solid blue;
+        border-right: 2px solid red;
+    }
+}
+ /* Extra large devices (extra large laptops and desktops, 2000px and up) */
+ @media only screen and (min-width: 1600px) {
+    .wrapper {
+        width: 30%;
+        margin: auto;
+        border-top: 2px solid yellow;
+        border-bottom: 2px solid green;
+        border-left: 2px solid blue;
+        border-right: 2px solid red;
+    }
 }
 .content {
-    width: 80%;
-    min-width: 450px;
-    border: 2px solid green;
-    min-height: 500px;
-    margin: 50px auto;
+    width: 98%;
+    min-height: 785px;
+    margin: 40px auto;
+    position: relative;
 }
 .header {
     text-align: center;
@@ -34,7 +79,7 @@ body {
     grid-gap: 1px;
 }
 .grid-item {
-    padding: 20px 40px;
+    padding: 20px 20px;
     border: 1px solid white;
     margin: 0px;
     font-weight: bold;
@@ -49,14 +94,17 @@ body {
 /* Categories Section */
 .categories {
     text-align: center;
-    border: 1px solid yellow;
+    border-top: 2px solid green;
+    border-bottom: 2px solid yellow;
+    border-right: 2px solid blue;
+    border-left: 2px solid red;
     padding-bottom: 20px;
-    margin-bottom: 1px;
+    margin: 1px;
 }
 
 /* Task Section */
 .task-list {
-    border: 1px solid blue;
+    min-height: 280px;
 }
 .task-wrapper {
     padding-inline-start: 0px;
@@ -106,34 +154,33 @@ body {
 }
 
 /* Add button */
-.add-button {
-    width: 50px;
-    height: 50px;
-    border: 2px solid white;
-    text-align: center;
-    border-radius: 50%;
-    line-height: 1.5;
-    float: right;
-    font-weight: bold;
-    font-size: 30px;
-    background-color: lightgreen;
-    color: black;
-    margin: 10px;
+.add-button img{
+	width: 50px;
+	height: 50px;
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+	border: 1px solid black;
 }
-.add-button:hover {
-    border: 2px solid lightgreen;
-    cursor: pointer;
+.add-button:hover img {
+	background: #0066ff;
+	border-radius: 50%;
+	border: 1px solid #0066ff;
 }
 
 /* Add New Tasks Styles */
 .add-task-section {
-    border: 1px solid purple;
+    border: 0px solid purple;
     text-align: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: black;
 }
 .add-task-form {
     width: 90%;
     max-width: 1000px;
-    border: 1px solid pink;
+    border: 0px solid pink;
     margin: auto;
 }
 .task-label {
@@ -160,13 +207,13 @@ body {
     resize: none;
 }
 .new-category {
-    margin-top: 10px;
+    margin: 10px auto;
+    display: block;
 }
 #priority {
     font-weight: bold;
 }
 .submit {
-    display: block;
     margin: 15px auto;
     padding: 10px;
 }
@@ -190,12 +237,16 @@ body {
 .task-preview-form {
     width: 90%;
     max-width: 1000px;
-    border: 1px solid pink;
+    border: 0px solid pink;
     margin: auto;
 }
 .task-preview-section {
-    border: 1px solid cyan;
+    border: 0px solid cyan;
     text-align: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: black;
 }
 .task-preview-categories {
     display: inline-grid;
@@ -215,4 +266,7 @@ body {
 }
 .not-hidden {
     display: block;
+}
+.button {
+    display: inline-block;
 }
