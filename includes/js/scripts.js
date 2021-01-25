@@ -63,7 +63,7 @@ todoData = {
             date_due : "2021-03-10",
             time_due : "10:00",
             priority : "Low",
-            tags : ["Home"],
+            tags : ["Home", "General"],
             completed : false
         }
     },
@@ -583,6 +583,7 @@ function getTasks() {
 
 // APP_F10. Fetch task info and display it in preview
 function fetchTask(clickedId) {
+    const catArray = new Category('tempArr');
     const taskArrKey = taskArr();
     let taskKey = document.getElementById('task-key'+clickedId).value;
     let taskTitle = taskArrKey[clickedId]['title'];
@@ -596,6 +597,11 @@ function fetchTask(clickedId) {
     document.getElementById('task-preview-description').value = taskDescription;
     document.getElementById('task-preview-date-due').value = taskDateDue;
     document.getElementById('task-preview-time-due').value = taskTimeDue;
+    for(i in catArray.catArr) {
+        if(taskTags.includes(catArray.catArr[i])) {
+            document.getElementById('p-c'+i+'').checked = true;
+        }
+    }
     let taskCompleted = taskArrKey[clickedId]['completed'];
     if(taskCompleted == true) {
         let taskDelete = document.getElementById('task-delete');
