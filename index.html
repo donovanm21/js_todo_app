@@ -26,8 +26,7 @@
                 <!-- Task Section -->
                 <div class="task-list">
                     <h2 class="center">Task List</h2>
-                    <div class="task-wrapper" id="task-wrapper">
-                    </div>
+                    <div class="task-wrapper" id="task-wrapper"></div>
                 </div>
                 <!-- Task Button for adding tasks -->
                 <div class="add-task" onclick="newTaskToggle();">
@@ -42,22 +41,21 @@
                     <div class="add-task-form">
                         <form id="new-task-form" action="" method="POST">
                             <label class="task-label">Title</label>
-                                <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
+                            <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
-                                <textarea class="task-input" id="new-task-description" placeholder="Task Description"></textarea>
+                            <textarea class="task-input" id="new-task-description" placeholder="Task Description"></textarea>
                             <label class="task-label">Date Due</label>
-                                <input class="task-input" id="new-task-date-due" type="date" />
+                            <input class="task-input" id="new-task-date-due" type="date" />
                             <label class="task-label">Time Due</label>
-                                <input class="task-input" id="new-task-time-due" type="time" />
+                            <input class="task-input" id="new-task-time-due" type="time" />
                             <label class="task-label">Priority</label>
-                                <input id="new-task-slider" class="task-input" type="range" min="1" max="3" />
-                                <div id="new-task-priority"></div>
+                            <input id="new-task-slider" class="task-input" type="range" min="1" max="3" />
+                            <div id="new-task-priority"></div>
                             <label class="task-label">Categories</label>
-                                <!-- Find a style that creates selectable buttons -->
-                                <div class="new-task-categories" id="new-task-categories">
-                                </div>
-                                <!-- Function will grab this input if not empty to create a new category -->
-                                <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
+                            <!-- Find a style that creates selectable buttons -->
+                            <div class="new-task-categories" id="new-task-categories"></div>
+                            <!-- Function will grab this input if not empty to create a new category -->
+                            <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
                             <input class="submit" type="submit" name="" onclick="addNewTask();" value="Create"/>
                         </form>
                     </div>
@@ -69,22 +67,21 @@
                         <form id="task-preview-form" action="" method="POST">
                             <input type="hidden" id="task-preview-taskkey" />
                             <label class="task-label">Title</label>
-                                <input class="task-input" id="task-preview-title" type="text" placeholder="House Work"/>
+                            <input class="task-input" id="task-preview-title" type="text" placeholder="House Work"/>
                             <label class="task-label">Description</label>
-                                <textarea class="task-input" id="task-preview-description" placeholder="Task Description" value=""></textarea>
+                            <textarea class="task-input" id="task-preview-description" placeholder="Task Description" value=""></textarea>
                             <label class="task-label">Date Due</label>
-                                <input class="task-input" id="task-preview-date-due" type="date" value=""/>
+                            <input class="task-input" id="task-preview-date-due" type="date" value=""/>
                             <label class="task-label">Time Due</label>
-                                <input class="task-input" id="task-preview-time-due" type="time" value=""/>
+                            <input class="task-input" id="task-preview-time-due" type="time" value=""/>
                             <label class="task-label">Priority</label>
-                                <input id="task-preview-slider" class="task-input" type="range" min="1" max="3" value=""/>
-                                <div id="task-preview-priority"></div>
+                            <input id="task-preview-slider" class="task-input" type="range" min="1" max="3" value=""/>
+                            <div id="task-preview-priority"></div>
                             <label class="task-label">Categories</label>
-                                <!-- Find a style that creates selectable buttons -->
-                                <div class="task-preview-categories" id="task-preview-categories">
-                                </div>
-                                <!-- Function will grab this input if not empty to create a new category -->
-                                <input class="task-input new-category" id="task-preview-category" type="text" placeholder="New Category"/>
+                            <!-- Find a style that creates selectable buttons -->
+                            <div class="task-preview-categories" id="task-preview-categories"></div>
+                            <!-- Function will grab this input if not empty to create a new category -->
+                            <input class="task-input new-category" id="task-preview-category" type="text" placeholder="New Category"/>
                             <div class="buttons">
                                 <input class="submit hidden" id="task-update" type="submit" name="" onclick="updateTask('u');" value="Update"/>
                                 <input class="submit hidden" id="task-completed" type="submit" name="" onclick="updateTask('c');" value="Complete"/>
