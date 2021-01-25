@@ -219,6 +219,14 @@
     font-weight: bold;
     text-align: right;
 }
+.error-title {
+    color: red;
+    font-weight: bold;
+}
+.error-description {
+    color: red;
+    font-weight: bold;
+}
 
 /* Task Preview */
 .task-preview-form {

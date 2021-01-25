@@ -42,8 +42,10 @@
                         <form id="new-task-form" action="" method="POST">
                             <label class="task-label">Title</label>
                             <input class="task-input" id="new-task-title" type="text" placeholder="House Work"/>
+                            <p class="error-title hidden" id="error-title">Please enter a title</p>
                             <label class="task-label">Description</label>
                             <textarea class="task-input" id="new-task-description" placeholder="Task Description"></textarea>
+                            <p class="error-description hidden" id="error-description">Please enter a task description</p>
                             <label class="task-label">Date Due</label>
                             <input class="task-input" id="new-task-date-due" type="date" />
                             <label class="task-label">Time Due</label>
@@ -56,7 +58,7 @@
                             <div class="new-task-categories" id="new-task-categories"></div>
                             <!-- Function will grab this input if not empty to create a new category -->
                             <input class="task-input new-category" id="new-task-category" type="text" placeholder="New Category"/>
-                            <input class="submit" type="submit" name="" onclick="addNewTask();" value="Create"/>
+                            <input class="submit" type="submit" name="" onclick="addNewTask(); event.preventDefault();" value="Create"/>
                         </form>
                     </div>
                 </div>

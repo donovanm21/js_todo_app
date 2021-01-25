@@ -519,35 +519,42 @@ function sliderDisplay(sliderID, priorityID) {
 // APP_F8. Add new task
 function addNewTask() {
     let taskTitle = document.getElementById('new-task-title').value;
+    let taskDescription = document.getElementById('new-task-description').value;
     let catArray = new Category('tempArr');
     if(taskTitle != "") {
-        let taskTitle = document.getElementById('new-task-title').value;
-        let taskDescription = document.getElementById('new-task-description').value;
-        let taskDateDue = document.getElementById('new-task-date-due').value;
-        let taskTimeDue = document.getElementById('new-task-time-due').value;
-        let taskPriority = document.getElementById('new-task-priority-ta').value;
-        let taskTags = [];
-        for(i = 0; i < catArray.catArr.length; i++) {
-            let nCatSelected = document.getElementById('n-c'+i+'');
-            if(nCatSelected.checked !== false) {
-                let tempCat = document.getElementById('n-c'+i+'').value;
-                taskTags.push(tempCat);
+        if(taskDescription != "") {
+            let taskTitle = document.getElementById('new-task-title').value;
+            let taskDescription = document.getElementById('new-task-description').value;
+            let taskDateDue = document.getElementById('new-task-date-due').value;
+            let taskTimeDue = document.getElementById('new-task-time-due').value;
+            let taskPriority = document.getElementById('new-task-priority-ta').value;
+            let taskTags = [];
+            for(i = 0; i < catArray.catArr.length; i++) {
+                let nCatSelected = document.getElementById('n-c'+i+'');
+                if(nCatSelected.checked !== false) {
+                    let tempCat = document.getElementById('n-c'+i+'').value;
+                    taskTags.push(tempCat);
+                }
+                let pCatSelected = document.getElementById('p-c'+i+'');
+                if(pCatSelected.checked !== false) {
+                    let tempCat = document.getElementById('p-c'+i+'').value;
+                    taskTags.push(tempCat);
+                }
             }
-            let pCatSelected = document.getElementById('p-c'+i+'');
-            if(pCatSelected.checked !== false) {
-                let tempCat = document.getElementById('p-c'+i+'').value;
-                taskTags.push(tempCat);
+            let tempNewCategory = document.getElementById('new-task-category').value;
+            if(tempNewCategory != "") {
+                taskTags.push(tempNewCategory);
             }
+            let tempNewTask = new Task(taskTitle, taskDescription, taskDateDue, taskTimeDue, taskPriority, taskTags, false);
+            tempNewTask.addTask();
+            newTaskCategory();
+            document.getElementById('error-description').classList.add('hidden');
+        } else {
+            document.getElementById('error-description').classList.remove('hidden');
+            document.getElementById('error-title').classList.add('hidden');
         }
-        let tempNewCategory = document.getElementById('new-task-category').value;
-        if(tempNewCategory != "") {
-            taskTags.push(tempNewCategory);
-        }
-        let tempNewTask = new Task(taskTitle, taskDescription, taskDateDue, taskTimeDue, taskPriority, taskTags, false);
-        tempNewTask.addTask();
-        newTaskCategory();
     } else {
-        console.log('Error: Please fill in all the fields');
+        document.getElementById('error-title').classList.remove('hidden');
     }
 }
 
@@ -619,53 +626,58 @@ function fetchTask(clickedId) {
 // APP_F11. Update task info
 function updateTask(value) {
     let taskTitle = document.getElementById('task-preview-title').value;
+    let taskDescription = document.getElementById('task-preview-description').value;
     let catArray = new Category('tempArr');
     if(taskTitle != "") {
-        let taskKey = document.getElementById('task-preview-taskkey').value;
-        let taskTitle = document.getElementById('task-preview-title').value;
-        let taskDescription = document.getElementById('task-preview-description').value;
-        let taskDateDue = document.getElementById('task-preview-date-due').value;
-        let taskTimeDue = document.getElementById('task-preview-time-due').value;
-        let taskPriority = document.getElementById('task-preview-priority-ta').value;
-        let taskTags = [];
-        for(i = 0; i < catArray.catArr.length; i++) {
-            let nCatSelected = document.getElementById('n-c'+i+'');
-            if(nCatSelected.checked !== false) {
-                let tempCat = document.getElementById('n-c'+i+'').value;
-                taskTags.push(tempCat);
+        if(taskDescription != "") {
+            let taskKey = document.getElementById('task-preview-taskkey').value;
+            let taskTitle = document.getElementById('task-preview-title').value;
+            let taskDescription = document.getElementById('task-preview-description').value;
+            let taskDateDue = document.getElementById('task-preview-date-due').value;
+            let taskTimeDue = document.getElementById('task-preview-time-due').value;
+            let taskPriority = document.getElementById('task-preview-priority-ta').value;
+            let taskTags = [];
+            for(i = 0; i < catArray.catArr.length; i++) {
+                let nCatSelected = document.getElementById('n-c'+i+'');
+                if(nCatSelected.checked !== false) {
+                    let tempCat = document.getElementById('n-c'+i+'').value;
+                    taskTags.push(tempCat);
+                }
+                let pCatSelected = document.getElementById('p-c'+i+'');
+                if(pCatSelected.checked !== false) {
+                    let tempCat = document.getElementById('p-c'+i+'').value;
+                    taskTags.push(tempCat);
+                }
             }
-            let pCatSelected = document.getElementById('p-c'+i+'');
-            if(pCatSelected.checked !== false) {
-                let tempCat = document.getElementById('p-c'+i+'').value;
-                taskTags.push(tempCat);
+            let tempNewCategory = document.getElementById('task-preview-category').value;
+            if(tempNewCategory != "") {
+                taskTags.push(tempNewCategory);
             }
-        }
-        let tempNewCategory = document.getElementById('task-preview-category').value;
-        if(tempNewCategory != "") {
-            taskTags.push(tempNewCategory);
-        }
-        let localData = getLocalData();
-        if(value == 'u') {
-            localData['todo_data'][taskKey]['title'] = taskTitle;
-            localData['todo_data'][taskKey]['description'] = taskDescription;
-            localData['todo_data'][taskKey]['date_due'] = taskDateDue;
-            localData['todo_data'][taskKey]['time_due'] = taskTimeDue;  
-            localData['todo_data'][taskKey]['priority'] = taskPriority;
-            localData['todo_data'][taskKey]['tags'] = taskTags;
-        } else if(value == 'c'){
-            localData['todo_data'][taskKey]['completed'] = true;
-        } else if(value == 'un'){
-            localData['todo_data'][taskKey]['completed'] = false;
-        } else if(value == 'd'){
-            let taskObj = localData['todo_data'];
-            delete taskObj[taskKey];
+            let localData = getLocalData();
+            if(value == 'u') {
+                localData['todo_data'][taskKey]['title'] = taskTitle;
+                localData['todo_data'][taskKey]['description'] = taskDescription;
+                localData['todo_data'][taskKey]['date_due'] = taskDateDue;
+                localData['todo_data'][taskKey]['time_due'] = taskTimeDue;  
+                localData['todo_data'][taskKey]['priority'] = taskPriority;
+                localData['todo_data'][taskKey]['tags'] = taskTags;
+            } else if(value == 'c'){
+                localData['todo_data'][taskKey]['completed'] = true;
+            } else if(value == 'un'){
+                localData['todo_data'][taskKey]['completed'] = false;
+            } else if(value == 'd'){
+                let taskObj = localData['todo_data'];
+                delete taskObj[taskKey];
+            } else {
+                console.log('Task Update');
+            }
+            parseData(localData);
+            // Add new Category if one is specified
+            newTaskCategory();
         } else {
-            console.log('Task Update');
+            document.getElementById('error-description').classList.remove('hidden');
         }
-        parseData(localData);
-        // Add new Category if one is specified
-        newTaskCategory();
     } else {
-        console.log('Error: Please fill in all the fields');
+        document.getElementById('error-title').classList.remove('hidden');
     }
 }
